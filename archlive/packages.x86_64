@@ -5,6 +5,7 @@ linux
 mkinitcpio
 mkinitcpio-archiso
 syslinux
-# Jeff's changes
-yay
+
+arch-install-scripts
+
 
