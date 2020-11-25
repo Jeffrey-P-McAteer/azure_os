@@ -1,0 +1,10 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+base
+linux
+mkinitcpio
+mkinitcpio-archiso
+syslinux
+# Jeff's changes
+yay
+

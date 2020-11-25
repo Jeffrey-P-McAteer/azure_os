@@ -1,4 +1,7 @@
 .crun/
 build/
+mkarchiso/
+work/
+out/
 
 
