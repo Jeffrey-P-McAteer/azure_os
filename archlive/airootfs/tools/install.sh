@@ -22,15 +22,17 @@ fi
 while [ -z "$INSTALL_DEVICE" ] || ! [ -e "$INSTALL_DEVICE" ]
 do
   lsblk
-  read -s -p "Device to install partitions to: " INSTALL_DEVICE
+  read -p "Device to install partitions to: " INSTALL_DEVICE
   if ! [ -e "$INSTALL_DEVICE" ] && [ -e "/dev/$INSTALL_DEVICE" ] ; then
     INSTALL_DEVICE="/dev/$INSTALL_DEVICE"
   fi
 done
 
-echo ""
-echo "INSTALL_DEVICE=$INSTALL_DEVICE"
-echo ""
+cat <<EOF
+
+INSTALL_DEVICE=$INSTALL_DEVICE"
+
+EOF
 
 timedatectl set-ntp true
 
@@ -143,6 +145,7 @@ pacstrap /mnt \
   i3 \
   openssh \
   vim \
+  dosfstools
 
 echo 'Generating fstab'
 genfstab -U /mnt >> /mnt/etc/fstab

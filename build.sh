@@ -79,7 +79,7 @@ qemu-system-x86_64 \
   -bios "$OVMF_CODE" \
   -boot d \
   -cdrom "$ISO_IMG" \
-  -m 2048 \
+  -m 3048 \
   -drive format=raw,file="$AZURE_OS_HDA"
 
 

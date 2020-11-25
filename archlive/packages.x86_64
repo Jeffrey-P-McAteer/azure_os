@@ -8,5 +8,7 @@ syslinux
 
 arch-install-scripts
 git
+dosfstools
+btrfs-progs
 reflector
 
