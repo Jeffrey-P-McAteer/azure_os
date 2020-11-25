@@ -130,13 +130,17 @@ mkdir -p /mnt/boot/
 
 mount "$BOOT_PARTITION" /mnt/boot/
 
-swapon "$SWAP_PARTITION"
+swapon "$SWAP_PARTITION" || true
 
 
 # We now have the system mounted at /mnt/ and we are ready
 # to copy packages + files in
 
 echo 'Running pacstrap'
+
+pacman-key --init
+pacman -Sy
+
 pacstrap /mnt \
   base \
   linux \
@@ -151,7 +155,7 @@ pacstrap /mnt \
   dosfstools \
   btrfs-progs \
   iwd \
-  zfs \
+  zsh \
 
 
 echo 'Generating fstab'
