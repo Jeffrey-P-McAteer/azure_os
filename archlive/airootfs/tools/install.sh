@@ -30,7 +30,7 @@ done
 
 cat <<EOF
 
-INSTALL_DEVICE=$INSTALL_DEVICE"
+INSTALL_DEVICE=$INSTALL_DEVICE
 
 EOF
 
@@ -109,8 +109,11 @@ mkfs.fat \
   -F32 \
   $BOOT_PARTITION
 
+mkswap $SWAP_PARTITION
+
 mkfs.btrfs \
   --label 'AzureOS-Root' \
+  --force \
   $ROOT_PARTITION
 
 
@@ -145,7 +148,11 @@ pacstrap /mnt \
   i3 \
   openssh \
   vim \
-  dosfstools
+  dosfstools \
+  btrfs-progs \
+  iwd \
+  zfs \
+
 
 echo 'Generating fstab'
 genfstab -U /mnt >> /mnt/etc/fstab

@@ -46,6 +46,27 @@ jconfigs=(
 
 tar -czvf archlive/airootfs/tools/jconfigs.tar.gz "${jconfigs[@]}"
 
+# Drop in a default network DHCP handler for ethernet conns
+mkdir -p archlive/airootfs/etc/systemd/network/
+cat >archlive/airootfs/etc/systemd/network/20-default.network <<EOF
+[Match]
+Name=*
+
+[Network]
+DHCP=ipv4
+UseDNS=yes
+DNS=1.1.1.1
+
+EOF
+mkdir -p archlive/airootfs/etc/systemd/system/multi-user.target.wants/
+
+ln -nsf /usr/lib/systemd/system/systemd-networkd.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/
+ln -nsf /usr/lib/systemd/system/systemd-resolved.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/
+
+
+
+# Now build the iso
+
 cd archlive
 
 sudo mkarchiso \
@@ -77,9 +98,9 @@ fi
 
 qemu-system-x86_64 \
   -bios "$OVMF_CODE" \
-  -boot d \
+  -enable-kvm -cpu host -boot d \
   -cdrom "$ISO_IMG" \
-  -m 3048 \
+  -m 3048 -net user -net nic \
   -drive format=raw,file="$AZURE_OS_HDA"
 
 
