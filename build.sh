@@ -62,7 +62,8 @@ echo "To clean, run:  sudo rm -rf archlive/out archlive/work"
 
 echo "Booting in qemu..."
 
-AZURE_OS_HDA="/mnt/wdb/azure_os_hda.img"
+#AZURE_OS_HDA="/mnt/wdb/azure_os_hda.img"
+AZURE_OS_HDA="/j/downloads/azure_os_hda.img"
 if ! [ -e "$AZURE_OS_HDA" ] ; then
   sudo qemu-img create "$AZURE_OS_HDA" 24G
   sudo chown jeffrey "$AZURE_OS_HDA"
@@ -77,7 +78,7 @@ fi
 qemu-system-x86_64 \
   -bios "$OVMF_CODE" \
   -boot d \
-  -cdrom $ISO_IMG \
+  -cdrom "$ISO_IMG" \
   -m 2048 \
   -drive format=raw,file="$AZURE_OS_HDA"
 

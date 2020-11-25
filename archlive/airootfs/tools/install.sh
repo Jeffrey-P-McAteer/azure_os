@@ -28,11 +28,13 @@ do
   fi
 done
 
+echo ""
 echo "INSTALL_DEVICE=$INSTALL_DEVICE"
+echo ""
 
 timedatectl set-ntp true
 
-read -p 'About to remove partition table, continue?' yn
+read -p 'About to remove partition table, continue? ' yn
 if ! grep -q y <<<"$yn" ; then
   echo 'Exiting...'
   exit 1
@@ -47,7 +49,7 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
   +4G # 4 GB boot partition
   n # new partition
   p # primary partition
-  1 # partition number 1
+  2 # partition number 2
     # default - start at beginning of disk 
   +2G # 2 GB swap partition
   t # set a partition's type
@@ -55,7 +57,7 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
   82 # id for linux-swap
   n # new partition
   p # primary partition
-  2 # partion number 2
+  3 # partion number 3
     # default, start immediately after preceding partition
     # default, extend partition to end of disk
   a # make a partition bootable
@@ -65,6 +67,102 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
   q # and we're done
 EOF
 
+echo "Done partitioning $INSTALL_DEVICE"
 
+INSTALL_DEVICE_NAME=$(basename "$INSTALL_DEVICE")
+
+# See https://unix.stackexchange.com/questions/226420/how-to-get-disk-name-that-contains-a-specific-partition
+export LANG=en_US.UTF-8
+# BOOT_PARTITION=$(lsblk | awk '/^[A-Za-z]/{d0=$1; print d0};/^[└─├─]/{d1=$1; print d0, d1};/^  [└─├─]/{d2=$1; print d0, d1, d2}' | sed 's/[├─└─]//g' | grep "$INSTALL_DEVICE_NAME" | head -n 2 | tail -n 1)
+# SWAP_PARTITION=$(lsblk | awk '/^[A-Za-z]/{d0=$1; print d0};/^[└─├─]/{d1=$1; print d0, d1};/^  [└─├─]/{d2=$1; print d0, d1, d2}' | sed 's/[├─└─]//g' | grep "$INSTALL_DEVICE_NAME" | head -n 3 | tail -n 1)
+# ROOT_PARTITION=$(lsblk | awk '/^[A-Za-z]/{d0=$1; print d0};/^[└─├─]/{d1=$1; print d0, d1};/^  [└─├─]/{d2=$1; print d0, d1, d2}' | sed 's/[├─└─]//g' | grep "$INSTALL_DEVICE_NAME" | tail -n 1)
+
+BOOT_PARTITION=$(ls "$INSTALL_DEVICE"* | head -n 2 | tail -n 1)
+SWAP_PARTITION=$(ls "$INSTALL_DEVICE"* | head -n 3 | tail -n 1)
+ROOT_PARTITION=$(ls "$INSTALL_DEVICE"* | head -n 4 | tail -n 1)
+
+cat <<EOF
+
+BOOT_PARTITION=$BOOT_PARTITION
+SWAP_PARTITION=$SWAP_PARTITION
+ROOT_PARTITION=$ROOT_PARTITION
+
+EOF
+
+read -p 'Does this look right, continue? ' yn
+if ! grep -q y <<<"$yn" ; then
+  echo 'Exiting...'
+  exit 1
+fi
+
+# Optimize mirrors (they will be copied to the new system)
+echo 'Optimizing /etc/pacman.d/mirrorlist (running in the bg, should take 30 seconds)'
+reflector --latest 20 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist &
+reflector_pid=$!
+echo "Forked process $reflector_pid"
+
+echo 'Creating filesystems on partitions...'
+
+mkfs.fat \
+  -F32 \
+  $BOOT_PARTITION
+
+mkfs.btrfs \
+  --label 'AzureOS-Root' \
+  $ROOT_PARTITION
+
+
+echo "Waiting on reflector_pid ($reflector_pid)..."
+wait $reflector_pid
+
+if ! [ -e /mnt/ ] ; then
+  mkdir /mnt/
+fi
+
+mount "$ROOT_PARTITION" /mnt/
+
+mkdir -p /mnt/boot/
+
+mount "$BOOT_PARTITION" /mnt/boot/
+
+swapon "$SWAP_PARTITION"
+
+
+# We now have the system mounted at /mnt/ and we are ready
+# to copy packages + files in
+
+echo 'Running pacstrap'
+pacstrap /mnt \
+  base \
+  linux \
+  linux-firmware \
+  sudo \
+  git \
+  reflector \
+  firefox \
+  i3 \
+  openssh \
+  vim \
+
+echo 'Generating fstab'
+genfstab -U /mnt >> /mnt/etc/fstab
+
+
+echo 'Copying /tools/ over...'
+
+mkdir -p /mnt/tools/
+
+cp -r /mnt/tools/. /mnt/tools/
+
+echo 'Running arch-chroot and executing mnt_install.sh'
+
+arch-chroot /mnt /tools/mnt_install.sh
+
+echo 'Install complete! Spawning shell in new OS...'
+
+arch-chroot /mnt
+
+# Sync changes
+sync
 
 
