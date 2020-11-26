@@ -79,6 +79,9 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
     # default - start at beginning of disk 
   +2G # 2 GB swap partition
   t # set a partition's type
+  1 # select first partition
+  1 # GPT id for EFI type
+  t # set a partition's type
   2 # select second partition
   19 # GPT id for linux-swap (82 is for DOS disks)
   n # new partition
