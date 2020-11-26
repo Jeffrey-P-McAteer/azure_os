@@ -6,6 +6,7 @@ mkinitcpio
 mkinitcpio-archiso
 syslinux
 
+wpa_supplicant
 arch-install-scripts
 git
 dosfstools

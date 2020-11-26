@@ -148,7 +148,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics
+    dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics wpa_supplicant
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
