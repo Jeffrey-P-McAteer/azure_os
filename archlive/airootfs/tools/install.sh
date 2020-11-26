@@ -58,6 +58,11 @@ if ! grep -q y <<<"$yn" ; then
   exit 1
 fi
 
+# for second runs this undoes what we did before
+sudo umount "$INSTALL_DEVICE"* || true
+sudo swapoff "$INSTALL_DEVICE"* || true
+
+set +e
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
   o # clear the in memory partition table
   n # new partition
@@ -84,6 +89,7 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
   w # write the partition table
   q # and we're done
 EOF
+set -e
 
 echo "Done partitioning $INSTALL_DEVICE"
 
@@ -168,10 +174,10 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
-pacman-key --init
-pacman-key --populate archlinux
-pacman-key --refresh-keys
-pacman -Syy
+pacman-key --init || true
+pacman-key --populate archlinux || true
+pacman-key --refresh-keys || true
+pacman -Syy || true
 
 pacstrap /mnt \
   base \
