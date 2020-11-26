@@ -177,8 +177,8 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
-pacman -Syy || true
-pacman -Sy archlinux-keyring || true
+pacman --noconfirm -Syy || true
+pacman --noconfirm -Sy archlinux-keyring || true
 pacman-key --init || true
 pacman-key --populate archlinux || true
 pacman-key --refresh-keys || true
