@@ -92,22 +92,24 @@ echo 'WARNING: lots of apps going in'
 
 sudo -u jeffrey yay -S sublime-text-3 oh-my-zsh-git tree 
 
-sudo -u jeffrey yay -S xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
+sudo -u jeffrey yay -S xorg xorg-server xorg-startx-systemd xorg-xrandr mesa startx
 sudo -u jeffrey yay -S i3
 
 # sudo -u jeffrey yay -S mingw-w64-gcc-base mingw-w64-gcc
 
-# sudo -u jeffrey yay -S urxvt ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
+sudo -u jeffrey yay -S urxvt ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
 
-# sudo -u jeffrey yay -S breeze-hacked-cursor-theme-git lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups
+sudo -u jeffrey yay -S breeze-hacked-cursor-theme-git lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups
 
 # sudo -u jeffrey yay -S dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics
 
 # sudo -u jeffrey yay -S mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl
 
+# sudo -u jeffrey yay -S radicale
+
 # sudo -u jeffrey yay -S libreoffice chromium
 
-# sudo -u jeffrey yay -S startx strace
+# sudo -u jeffrey yay -S strace
 
 # sudo -u jeffrey yay -S jdk-openjdk jd-gui-bin pavucontrol python python-pip xpra discount evolution
 
