@@ -223,11 +223,20 @@ EOF
 ####
 
 # Default wifi network
-cat <<EOF >/etc/systemd/network/24-home-wifi-network.network
+cat <<EOF >/etc/systemd/network/24-home-wifi.network
 [Match]
 Name=wl*
 SSID=MacHome 5ghz
 # BSSID=aa:bb:cc:dd:ee:ff
+
+[Network]
+DHCP=true
+
+EOF
+# Default ethernet
+cat <<EOF >/etc/systemd/network/24-default-ethernet.network
+[Match]
+Name=en*
 
 [Network]
 DHCP=true
