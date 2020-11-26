@@ -164,7 +164,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    strace
+    strace nmap
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
