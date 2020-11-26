@@ -21,6 +21,28 @@ hostname 'azure-angel'
 # Just in case pacstrap didn't already do this
 mkinitcpio -P
 
+# Package + signing stuff
+mkdir -p /etc/pacman.d/gnupg
+echo 'keyserver hkp://pool.key-servers.net' >> /etc/pacman.d/gnupg/gpg.conf
+mkdir -p /root/.gnupg/
+echo 'keyserver hkp://pool.key-servers.net' >> /root/.gnupg/gpg.conf
+
+cat <<EOF > /etc/pacman.d/mirrorlist
+# USA
+Server = http://mirrors.acm.wpi.edu/archlinux/\$repo/os/\$arch
+
+## Worldwide
+Server = http://mirrors.evowise.com/archlinux/\$repo/os/\$arch
+Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+
+EOF
+
+pacman-key --init
+pacman-key --populate archlinux
+pacman-key --refresh-keys
+
+pacman -Syy
 
 # Create jeffrey user
 useradd \
@@ -30,6 +52,10 @@ useradd \
 
 echo "Type new password for user 'jeffrey':"
 passwd jeffrey
+
+# Ensure wheel group has sudo rights
+echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheelsetup
+
 
 # use jeffrey user to install yay
 
@@ -48,21 +74,23 @@ echo 'WARNING: lots of apps going in'
 
 sudo -u jeffrey -c 'yay -S sublime-text-3 oh-my-zsh-git tree '
 
-sudo -u jeffrey -c 'yay -S mingw-w64-gcc-base mingw-w64-gcc'
+sudo -u jeffrey -c 'yay -S xorg xorg-server xorg-startx-systemd xorg-xrandr mesa'
 
-sudo -u jeffrey -c 'yay -S urxvt ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git'
+# sudo -u jeffrey -c 'yay -S mingw-w64-gcc-base mingw-w64-gcc'
 
-sudo -u jeffrey -c 'yay -S breeze-hacked-cursor-theme-git lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups'
+# sudo -u jeffrey -c 'yay -S urxvt ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git'
 
-sudo -u jeffrey -c 'yay -S dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics'
+# sudo -u jeffrey -c 'yay -S breeze-hacked-cursor-theme-git lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups'
 
-sudo -u jeffrey -c 'yay -S mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl'
+# sudo -u jeffrey -c 'yay -S dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics'
 
-sudo -u jeffrey -c 'yay -S libreoffice chromium'
+# sudo -u jeffrey -c 'yay -S mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl'
 
-sudo -u jeffrey -c 'yay -S startx strace'
+# sudo -u jeffrey -c 'yay -S libreoffice chromium'
 
-sudo -u jeffrey -c 'yay -S jdk-openjdk jd-gui-bin pavucontrol python python-pip xpra discount evolution'
+# sudo -u jeffrey -c 'yay -S startx strace'
+
+# sudo -u jeffrey -c 'yay -S jdk-openjdk jd-gui-bin pavucontrol python python-pip xpra discount evolution'
 
 echo 'WARNING: installing linux-ck'
 

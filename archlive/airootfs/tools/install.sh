@@ -19,6 +19,14 @@ if (( $EUID != 0 )); then
     exit 1
 fi
 
+# Optimize mirrors (they will be copied to the new system)
+echo 'Optimizing /etc/pacman.d/mirrorlist (running in the bg, should take 30 seconds)'
+#reflector --latest 20 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist &
+sh -c 'sleep 1' &
+reflector_pid=$!
+echo "Forked process $reflector_pid"
+
+
 while [ -z "$INSTALL_DEVICE" ] || ! [ -e "$INSTALL_DEVICE" ]
 do
   lsblk
@@ -35,6 +43,14 @@ INSTALL_DEVICE=$INSTALL_DEVICE
 EOF
 
 timedatectl set-ntp true
+# Setup time + locale
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock --systohc
+
+echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
+locale-gen
+echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
+
 
 read -p 'About to remove partition table, continue? ' yn
 if ! grep -q y <<<"$yn" ; then
@@ -97,12 +113,6 @@ if ! grep -q y <<<"$yn" ; then
   exit 1
 fi
 
-# Optimize mirrors (they will be copied to the new system)
-echo 'Optimizing /etc/pacman.d/mirrorlist (running in the bg, should take 30 seconds)'
-reflector --latest 20 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist &
-reflector_pid=$!
-echo "Forked process $reflector_pid"
-
 echo 'Creating filesystems on partitions...'
 
 mkfs.fat \
@@ -138,8 +148,30 @@ swapon "$SWAP_PARTITION" || true
 
 echo 'Running pacstrap'
 
+# Right now GPG servers are being dumb.
+# Ideally we'd use pool.sks-keyservers.net but I don't know where pacman's gpg config file is.
+sed -i 's/SigLevel = .*/SigLevel = Never/g' /etc/pacman.conf
+
+mkdir -p /etc/pacman.d/gnupg
+echo 'keyserver hkp://pool.key-servers.net' >> /etc/pacman.d/gnupg/gpg.conf
+mkdir -p /root/.gnupg/
+echo 'keyserver hkp://pool.key-servers.net' >> /root/.gnupg/gpg.conf
+
+cat <<EOF > /etc/pacman.d/mirrorlist
+# USA
+Server = http://mirrors.acm.wpi.edu/archlinux/\$repo/os/\$arch
+
+## Worldwide
+Server = http://mirrors.evowise.com/archlinux/\$repo/os/\$arch
+Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+
+EOF
+
 pacman-key --init
-pacman -Sy
+pacman-key --populate archlinux
+pacman-key --refresh-keys
+pacman -Syy
 
 pacstrap /mnt \
   base \
@@ -147,15 +179,12 @@ pacstrap /mnt \
   linux-firmware \
   sudo \
   git \
-  reflector \
-  firefox \
-  i3 \
   openssh \
   vim \
   dosfstools \
   btrfs-progs \
   iwd \
-  zsh \
+  zsh
 
 
 echo 'Generating fstab'
@@ -165,16 +194,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo 'Copying /tools/ over...'
 
 mkdir -p /mnt/tools/
+cp -r /tools/. /mnt/tools/
 
-cp -r /mnt/tools/. /mnt/tools/
+echo 'azure-angel' > /mnt/etc/hostname
 
-echo 'Running arch-chroot and executing mnt_install.sh'
-
-arch-chroot /mnt /tools/mnt_install.sh
-
-echo 'Install complete! Spawning shell in new OS...'
+echo 'Running arch-chroot, please run /tools/mnt_install.sh'
 
 arch-chroot /mnt
+
+echo 'Install complete!'
 
 # Sync changes
 sync

@@ -96,10 +96,17 @@ if ! [ -e "$OVMF_CODE" ] ; then
   echo "Please install 'edk2-ovmf' so the file $OVMF_CODE is available."
 fi
 
+cat <<EOF
+
+====================== BOOTING ======================
+
+EOF
+
 qemu-system-x86_64 \
   -bios "$OVMF_CODE" \
   -enable-kvm -cpu host -boot d \
   -cdrom "$ISO_IMG" \
+  -nographic -serial mon:stdio \
   -m 3048 -net user -net nic \
   -drive format=raw,file="$AZURE_OS_HDA"
 
