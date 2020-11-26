@@ -212,3 +212,13 @@ tar -C / -zxvf /tools/jconfigs.tar.gz
 
 # Sync changes
 sync
+
+cat <<EOF
+
+DONE!
+
+$0 has finished setting up Jeff's system packages and personal configs.
+Exit the chroot environment with 'exit' then shutdown and reboot
+into the new OS!
+
+EOF
