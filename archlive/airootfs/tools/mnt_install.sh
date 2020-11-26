@@ -132,7 +132,7 @@ sudo -u jeffrey yay -S \
     xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    i3
+    i3 lxappearance arc-gtk-theme breeze-hacked-cursor-theme
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -164,7 +164,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    strace nmap intel-ucode
+    strace nmap intel-ucode tunsafe
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
