@@ -64,32 +64,27 @@ if ! grep -q y <<<"$yn" ; then
 fi
 
 # for second runs this undoes what we did before
-sudo umount "$INSTALL_DEVICE"* || true
-sudo swapoff "$INSTALL_DEVICE"* || true
+umount "$INSTALL_DEVICE"* || true
+swapoff "$INSTALL_DEVICE"* || true
 
 set +e
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
   g # replace the in memory partition table with an empty GPT table
   n # new partition
-  p # primary partition
   1 # partition number 1
     # default - start at beginning of disk 
   +4G # 4 GB boot partition
   n # new partition
-  p # primary partition
   2 # partition number 2
     # default - start at beginning of disk 
   +2G # 2 GB swap partition
   t # set a partition's type
   2 # select second partition
-  82 # id for linux-swap
+  19 # GPT id for linux-swap (82 is for DOS disks)
   n # new partition
-  p # primary partition
   3 # partion number 3
     # default, start immediately after preceding partition
     # default, extend partition to end of disk
-  a # make a partition bootable
-  1 # bootable partition is partition 1 -- /dev/sda1
   p # print the in-memory partition table
   w # write the partition table
   q # and we're done
