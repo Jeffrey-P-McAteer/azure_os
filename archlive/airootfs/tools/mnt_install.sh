@@ -77,6 +77,17 @@ passwd jeffrey
 # Ensure wheel group has sudo rights
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheelsetup
 
+
+# Add autologin for jeffrey user
+mkdir -p '/etc/systemd/system/getty@tty1.service.d'
+cat <<EOF >/etc/systemd/system/getty@tty1.service.d/override.conf
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin jeffrey --noclear %I \$TERM
+
+EOF
+
+
 # Install deps to makepkg
 pacman -S base-devel
 
@@ -121,18 +132,6 @@ sudo -u jeffrey yay -S breeze-hacked-cursor-theme-git lxappearance xorg-xcursorg
 echo 'WARNING: installing linux-ck'
 
 sudo -u jeffrey yay -S intel-ucode linux-ck || true # Don't fail on this if we don't get it
-
-
-
-# Add autologin for jeffrey user
-mkdir -p '/etc/systemd/system/getty@tty1.service.d'
-cat <<EOF >/etc/systemd/system/getty@tty1.service.d/override.conf
-[Service]
-ExecStart=
-ExecStart=-/usr/bin/agetty --autologin jeffrey --noclear %I \$TERM
-
-EOF
-
 
 
 # Sync changes
