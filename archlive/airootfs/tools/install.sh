@@ -36,7 +36,7 @@ locale_and_mirror_tasks() {
 
 }
 
-locale_and_mirror_tasks &
+locale_and_mirror_tasks 2>/dev/null >/dev/null &
 locale_and_mirror_subsh_pid=$!
 echo "Forked process $locale_and_mirror_subsh_pid"
 sleep 2 # for timedatectl and hwclock, that's a tad more important.
