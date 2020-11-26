@@ -132,7 +132,7 @@ sudo -u jeffrey yay -S \
     xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    i3 lxappearance arc-gtk-theme breeze-hacked-cursor-theme
+    i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
