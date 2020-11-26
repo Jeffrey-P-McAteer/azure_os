@@ -24,7 +24,7 @@ echo 'azure-angel' > /etc/hostname
 mkinitcpio -P
 
 # Bootloader
-bootctl install
+bootctl --esp-path=/boot/ install
 
 # Package + signing stuff
 mkdir -p /etc/pacman.d/gnupg
@@ -137,6 +137,18 @@ sudo -u jeffrey yay -S breeze-hacked-cursor-theme-git lxappearance xorg-xcursorg
 echo 'WARNING: installing linux-ck'
 
 sudo -u jeffrey yay -S intel-ucode linux-ck || true # Don't fail on this if we don't get it
+
+# Add linux-ck boot entry
+ROOT_PARTUUID=$(blkid | grep -i 'AzureOS-Root' | sed 's/.*PARTUUID="//g' | sed 's/".*//g' | tr -d '\n')
+echo "ROOT_PARTUUID=$ROOT_PARTUUID"
+cat <<EOF >/boot/loader/entries/azureosck.conf
+title Azure OS CK
+linux /vmlinuz-linux-ck
+initrd /intel-ucode.img
+initrd /initramfs-linux-ck.img
+options root=PARTUUID=$ROOT_PARTUUID rootfstype=btrfs add_efi_memmap mitigations=off loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0 noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off intel_pstate=passive pti=off
+
+EOF
 
 # Extract old files, overwriting any which exist.
 tar -C / -zxvf /tools/jconfigs.tar.gz
