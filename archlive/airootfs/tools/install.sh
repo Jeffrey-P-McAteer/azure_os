@@ -174,10 +174,11 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
+pacman -Syy || true
+pacman -Sy archlinux-keyring || true
 pacman-key --init || true
 pacman-key --populate archlinux || true
 pacman-key --refresh-keys || true
-pacman -Syy || true
 
 pacstrap /mnt \
   base \
@@ -203,8 +204,22 @@ mkdir -p /mnt/tools/
 cp -r /tools/. /mnt/tools/
 
 echo 'azure-angel' > /mnt/etc/hostname
+cat <<EOF >/mnt/etc/hosts
+#<ip-address> <hostname.domain.org> <hostname>
+127.0.0.1   localhost.localdomain localhost azure-angel
+::1         localhost.localdomain localhost azure-angel
+
+EOF
+
+if [ -e /mnt/etc/resolv.conf ] ; then
+  rm /mnt/etc/resolv.conf
+fi
+ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+
 
 echo 'Running arch-chroot, please run /tools/mnt_install.sh'
+
+systemctl restart systemd-resolved # no idea, but we have some dns issues with git/yay that do not present in ping/curl
 
 arch-chroot /mnt
 

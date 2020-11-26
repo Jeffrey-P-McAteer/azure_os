@@ -38,11 +38,27 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
+
+pacman -Syy || true
+pacman -Sy archlinux-keyring || true
 pacman-key --init || true
 pacman-key --populate archlinux || true
 pacman-key --refresh-keys || true
 
-pacman -Syy || true
+
+# Enable some systemd tasks
+ln -nsf /usr/lib/systemd/system/systemd-networkd.service /etc/systemd/system/multi-user.target.wants/
+ln -nsf /usr/lib/systemd/system/systemd-resolved.service /etc/systemd/system/multi-user.target.wants/
+
+# We do the symlinking before moving into the new OS
+# if [ -e /etc/resolv.conf ] ; then
+#   rm /etc/resolv.conf
+# fi
+# ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+pacman -S systemd-resolvconf # replaces /usr/bin/resolvconf with systemd so it can manage 3rdparty requests
+
+
 
 # Create jeffrey user
 useradd \
@@ -101,6 +117,13 @@ sudo -u jeffrey yay -S intel-ucode linux-ck || true # Don't fail on this if we d
 
 
 # Add autologin for jeffrey user
+mkdir -p '/etc/systemd/system/getty@tty1.service.d'
+cat <<EOF >/etc/systemd/system/getty@tty1.service.d/override.conf
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin jeffrey --noclear %I \$TERM
+
+EOF
 
 
 
