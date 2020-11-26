@@ -133,6 +133,8 @@ echo 'WARNING: installing linux-ck'
 
 sudo -u jeffrey yay -S intel-ucode linux-ck || true # Don't fail on this if we don't get it
 
+# Extract old files, overwriting any which exist.
+tar -C / -zxvf /tools/jconfigs.tar.gz
 
 # Sync changes
 sync
