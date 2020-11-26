@@ -44,11 +44,11 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 EOF
 
 
-pacman -Syy || true
-pacman -Sy archlinux-keyring || true
-pacman-key --init || true
-pacman-key --populate archlinux || true
-pacman-key --refresh-keys || true
+pacman --noconfirm -Syy || true
+pacman --noconfirm -Sy archlinux-keyring || true
+yes | pacman-key --init || true
+yes | pacman-key --populate archlinux || true
+yes | pacman-key --refresh-keys || true
 
 
 # Enable some systemd tasks
@@ -61,7 +61,7 @@ ln -nsf /usr/lib/systemd/system/systemd-resolved.service /etc/systemd/system/mul
 # fi
 # ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
-pacman -S systemd-resolvconf # replaces /usr/bin/resolvconf with systemd so it can manage 3rdparty requests
+pacman -S --noconfirm systemd-resolvconf # replaces /usr/bin/resolvconf with systemd so it can manage 3rdparty requests
 if ! grep 127 /etc/resolv.conf ; then
   cat <<EOF >>/etc/resolv.conf
 nameserver 127.0.0.53
@@ -94,7 +94,7 @@ EOF
 
 
 # Install deps to makepkg
-pacman -S base-devel
+pacman -S --noconfirm base-devel
 
 # use jeffrey user to install yay
 
