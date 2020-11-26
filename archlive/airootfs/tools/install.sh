@@ -26,6 +26,11 @@ sh -c 'sleep 1' &
 reflector_pid=$!
 echo "Forked process $reflector_pid"
 
+# This script may be called like "/tools/install.sh sda" to automatically use /dev/sda for partitions
+INSTALL_DEVICE="$1"
+if ! [ -e "$INSTALL_DEVICE" ] && [ -e "/dev/$INSTALL_DEVICE" ] ; then
+  INSTALL_DEVICE="/dev/$INSTALL_DEVICE"
+fi
 
 while [ -z "$INSTALL_DEVICE" ] || ! [ -e "$INSTALL_DEVICE" ]
 do
