@@ -140,7 +140,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git noto-fonts
+    rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git noto-fonts terminus-font-otb
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
