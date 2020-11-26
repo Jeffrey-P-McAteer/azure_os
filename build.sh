@@ -39,6 +39,11 @@ jconfigs=(
   # Higher level graphics
   '/j/.config/i3/config'
   '/j/.i3status.conf'
+  '/j/.config/dunst'
+  '/j/.config/mpv/mpv.conf'
+  '/j/.config/nitrogen/'
+  '/j/.config/sublime-text-3/'
+  '/j/.config/yay/config.json'
 
   # MY applications (reasonably sized I assure... nobody)
   '/j/bins/azure-os/'
