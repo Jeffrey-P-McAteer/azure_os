@@ -214,7 +214,12 @@ EOF
 if [ -e /mnt/etc/resolv.conf ] ; then
   rm /mnt/etc/resolv.conf
 fi
-ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+#ln -sf /run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+cat <<EOF >/mnt/etc/resolv.conf
+nameserver 127.0.0.53
+options edns0 trust-ad
+EOF
+chattr +i /mnt/etc/resolv.conf
 
 
 echo 'Running arch-chroot, please run /tools/mnt_install.sh'

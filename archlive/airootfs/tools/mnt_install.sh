@@ -93,6 +93,7 @@ echo 'WARNING: lots of apps going in'
 sudo -u jeffrey yay -S sublime-text-3 oh-my-zsh-git tree 
 
 sudo -u jeffrey yay -S xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
+sudo -u jeffrey yay -S i3
 
 # sudo -u jeffrey yay -S mingw-w64-gcc-base mingw-w64-gcc
 
