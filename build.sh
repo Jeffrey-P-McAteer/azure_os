@@ -41,7 +41,15 @@ jconfigs=(
   '/j/.i3status.conf'
 
   # MY applications (reasonably sized I assure... nobody)
-  '/j/bins/azure_os/'
+  '/j/bins/azure-os/'
+  '/j/bins/music_fetch.py' # todo rename with -
+  '/j/bins/import-wp.sh' # todo rename
+  
+  # enhancements to existing programs
+  '/j/bins/rmpv'
+  '/j/bins/gdbbin'
+
+  #'/j/bin/' # TODO uncomment when we've cleaned it out
 
   # Applications + stupidly large things
   #'/j/.mozilla/'

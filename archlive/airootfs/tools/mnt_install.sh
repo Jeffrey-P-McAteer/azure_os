@@ -192,7 +192,21 @@ timeout 2
 default azureos.conf
 EOF
 
-# Add an example wifi network
+# install rust in jeff's account
+sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+
+
+####
+##
+## The below files OUGHT to be added to azure_os/build.sh in jconfigs.
+## They are hardcoded here because they do not exist on the source OS
+## but they are planned in the next OS.
+## 
+## TODO start versioning my personal OS?
+##
+####
+
+# Default wifi network
 cat <<EOF >/etc/systemd/network/24-home-wifi-network.network
 [Match]
 Name=wl*
@@ -204,10 +218,43 @@ DHCP=true
 
 EOF
 
-# install rust in jeff's account
-sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+# .xinitrc for i3wm
+sudo -u jeffrey sh -c "cat - > /j/.xinitrc" <<EOF
+
+# i3 is responsible for all x11 app startups (/j/.config/i3/config),
+# do not start x11 apps here besides i3.
+
+# SO SAYETH THE PRIMARY USER OF THIS OS
+
+exec i3
+
+EOF
+
+
+# This is the authoritative list of directories I use to organize $HOME
+jdirs=(
+  '/j/bin'        # symlinks to bins/<project>/<build directory>/<actual binary>
+  '/j/bins'       # directories of source/config/build tools which produce my bins
+  '/j/downloads'  # fuck capital letters, I don't love my shift key that much.
+  '/j/ident'      # was /j/i/, contains secrets and identities
+  '/j/lists'      # holds anime.csv and music.csv, any other lists I keep track of (books.csv?) Most of these .csv files will have comments using '#' chars.
+  '/j/music'      # contains music which is managed by /j/bins/music_fetch.py which reads /j/lists/music.csv
+  
+)
+for jd in jdirs ; do
+  echo "Creating $jd"
+  mkdir -p "$jd"
+done
+
+
+####
+##
+## END the hardcoded files section, we extract everything else below + exit.
+##
+####
 
 # Extract old files, overwriting any which exist.
+# These have passed the quality requirement 100%.
 tar -C / -zxvf /tools/jconfigs.tar.gz
 
 # Sync changes
@@ -222,3 +269,5 @@ Exit the chroot environment with 'exit' then shutdown and reboot
 into the new OS!
 
 EOF
+
+

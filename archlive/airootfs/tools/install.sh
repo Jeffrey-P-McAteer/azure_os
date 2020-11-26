@@ -2,7 +2,7 @@
 
 # Jeff's OS install script.
 # This assumes a fairly vanilla Arch .iso / live system
-# and targets a laptop that boots EFI systems on an SSD.
+# and targets the internal SSD of a laptop that boots EFI systems.
 
 # This script installs the OS, sets up the 'jeffrey' user
 # with home directory '/j/' as well as some other directories.
@@ -19,12 +19,27 @@ if (( $EUID != 0 )); then
     exit 1
 fi
 
-# Optimize mirrors (they will be copied to the new system)
-echo 'Optimizing /etc/pacman.d/mirrorlist (running in the bg, should take 30 seconds)'
-#reflector --latest 20 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist &
-sh -c 'sleep 1' &
-reflector_pid=$!
-echo "Forked process $reflector_pid"
+locale_and_mirror_tasks() {
+  timedatectl set-ntp true
+  # Setup time + locale
+  ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+  hwclock --systohc
+
+  echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
+  locale-gen
+  echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
+
+  # Optimize mirrors (they will be copied to the new system)
+  echo 'Optimizing /etc/pacman.d/mirrorlist (running in the bg, should take 30 seconds)'
+  #reflector --latest 20 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist &
+  sh -c 'sleep 1' # TODO move back to reflector once mirrors are more decently maintained
+
+}
+
+locale_and_mirror_tasks &
+locale_and_mirror_subsh_pid=$!
+echo "Forked process $locale_and_mirror_subsh_pid"
+sleep 2 # for timedatectl and hwclock, that's a tad more important.
 
 # This script may be called like "/tools/install.sh sda" to automatically use /dev/sda for partitions
 INSTALL_DEVICE="$1"
@@ -46,16 +61,6 @@ cat <<EOF
 INSTALL_DEVICE=$INSTALL_DEVICE
 
 EOF
-
-timedatectl set-ntp true
-# Setup time + locale
-ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
-hwclock --systohc
-
-echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
-locale-gen
-echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
-
 
 read -p 'About to remove partition table, continue? ' yn
 if ! grep -q y <<<"$yn" ; then
@@ -136,8 +141,8 @@ mkfs.btrfs \
   $ROOT_PARTITION
 
 
-echo "Waiting on reflector_pid ($reflector_pid)..."
-wait $reflector_pid
+echo "Waiting on locale_and_mirror_subsh_pid ($locale_and_mirror_subsh_pid)..."
+wait $locale_and_mirror_subsh_pid
 
 if ! [ -e /mnt/ ] ; then
   mkdir /mnt/
