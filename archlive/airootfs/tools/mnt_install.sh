@@ -259,12 +259,21 @@ jdirs=(
       # bb/<blackberry camera files, synced on USB conn>
       # hourly/<timestamped pics of webcam every hour, post-processed into other projects>
       # TODO
-  'proj' # projects
-
+  '/j/proj' # projects
+  ''
 )
 for jd in jdirs ; do
-  echo "Creating $jd"
+  echo "Creating directory $jd"
   mkdir -p "$jd"
+done
+
+jfiles=(
+  '/j/tasks.toml' # [[task]].name="do thing X"/.period="24h" ; polled by /j/bins/eventmgr.py every 60s -> 300s? keep it opinionated.
+
+)
+for jf in jfiles ; do
+  echo "Touching file $jf"
+  touch "$jf"
 done
 
 

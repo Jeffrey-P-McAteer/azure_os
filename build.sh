@@ -48,6 +48,7 @@ jconfigs=(
   # enhancements to existing programs
   '/j/bins/rmpv'
   '/j/bins/gdbbin'
+  '/j/bins/pause-procs'
 
   #'/j/bin/' # TODO uncomment when we've cleaned it out
 
