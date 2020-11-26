@@ -251,6 +251,8 @@ sudo -u jeffrey sh -c "cat - > /j/.xinitrc" <<EOF
 
 # SO SAYETH THE PRIMARY USER OF THIS OS
 
+xrdb ~/.Xresources
+
 exec i3
 
 EOF
