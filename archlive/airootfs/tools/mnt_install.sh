@@ -140,7 +140,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl
+    mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -187,6 +187,9 @@ SSID=MacHome 5ghz
 DHCP=true
 
 EOF
+
+# install rust in jeff's account
+sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 
 # Extract old files, overwriting any which exist.
 tar -C / -zxvf /tools/jconfigs.tar.gz
