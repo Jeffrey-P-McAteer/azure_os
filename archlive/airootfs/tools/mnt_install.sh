@@ -111,32 +111,58 @@ pacman -S base-devel
 
 echo 'WARNING: lots of apps going in'
 
-sudo -u jeffrey yay -S sublime-text-3 oh-my-zsh-git tree 
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    sublime-text-3 oh-my-zsh-git tree 
 
-sudo -u jeffrey yay -S xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
-sudo -u jeffrey yay -S i3
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    i3
 
-# sudo -u jeffrey yay -S mingw-w64-gcc-base mingw-w64-gcc
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    mingw-w64-gcc-base mingw-w64-gcc
 
-sudo -u jeffrey yay -S urxvt ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
 
-sudo -u jeffrey yay -S breeze-hacked-cursor-theme-git lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    breeze-hacked-cursor-theme-git lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups
 
-# sudo -u jeffrey yay -S dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics
 
-# sudo -u jeffrey yay -S mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl
 
-# sudo -u jeffrey yay -S radicale
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    radicale
 
-# sudo -u jeffrey yay -S libreoffice chromium
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    firefox libreoffice chromium
 
-# sudo -u jeffrey yay -S strace
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    strace
 
-# sudo -u jeffrey yay -S jdk-openjdk jd-gui-bin pavucontrol python python-pip xpra discount evolution
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    jdk-openjdk jd-gui-bin pavucontrol python python-pip xpra discount evolution
 
 echo 'WARNING: installing linux-ck'
 
-sudo -u jeffrey yay -S intel-ucode linux-ck || true # Don't fail on this if we don't get it
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    intel-ucode linux-ck || true # Don't fail on this if we don't get it
 
 # Add linux-ck boot entry
 ROOT_PARTUUID=$(blkid | grep -i 'AzureOS-Root' | sed 's/.*PARTUUID="//g' | sed 's/".*//g' | tr -d '\n')
@@ -147,6 +173,18 @@ linux /vmlinuz-linux-ck
 initrd /intel-ucode.img
 initrd /initramfs-linux-ck.img
 options root=PARTUUID=$ROOT_PARTUUID rootfstype=btrfs add_efi_memmap mitigations=off loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0 noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off intel_pstate=passive pti=off
+
+EOF
+
+# Add an example wifi network
+cat <<EOF >/etc/systemd/network/24-home-wifi-network.network
+[Match]
+Name=wl*
+SSID=MacHome 5ghz
+# BSSID=aa:bb:cc:dd:ee:ff
+
+[Network]
+DHCP=true
 
 EOF
 
