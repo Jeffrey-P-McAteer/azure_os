@@ -80,7 +80,19 @@ echo "Type new password for user 'jeffrey':"
 passwd jeffrey
 
 # Ensure wheel group has sudo rights
-echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheelsetup
+# echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheelsetup
+# echo '%sudo ALL=(ALL) ALL' >> /etc/sudoers.d/wheelsetup
+
+# EVEN Better; just make me the special one.
+cat <<EOJC > /etc/sudoers.d/jeffrey
+jeffrey ALL=(ALL) ALL
+Defaults:jeffrey timestamp_timeout=900
+Defaults:jeffrey !tty_tickets
+
+EOJC
+
+# Grant root rights to ALL (this is removed at the end)
+echo 'root ALL = (ALL) NOPASSWD: ALL' > /etc/sudoers.d/installstuff
 
 
 # Add autologin for jeffrey user
@@ -239,7 +251,12 @@ jdirs=(
   '/j/ident'      # was /j/i/, contains secrets and identities
   '/j/lists'      # holds anime.csv and music.csv, any other lists I keep track of (books.csv?) Most of these .csv files will have comments using '#' chars.
   '/j/music'      # contains music which is managed by /j/bins/music_fetch.py which reads /j/lists/music.csv
-  
+  '/j/photos'     # contains:
+      # bb/<blackberry camera files, synced on USB conn>
+      # hourly/<timestamped pics of webcam every hour, post-processed into other projects>
+      # TODO
+  'proj' # projects
+
 )
 for jd in jdirs ; do
   echo "Creating $jd"
@@ -256,6 +273,10 @@ done
 # Extract old files, overwriting any which exist.
 # These have passed the quality requirement 100%.
 tar -C / -zxvf /tools/jconfigs.tar.gz
+
+
+# Remove rights we granted root earlier; yeah it's stupid but we're being civilized here.
+rm /etc/sudoers.d/installstuff || true
 
 # Sync changes
 sync
