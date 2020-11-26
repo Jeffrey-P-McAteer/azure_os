@@ -40,11 +40,16 @@ jconfigs=(
   '/j/.config/i3/config'
   '/j/.i3status.conf'
 
+  # MY applications (reasonably sized I assure... nobody)
+  '/j/bins/azure_os/'
+
   # Applications + stupidly large things
   #'/j/.mozilla/'
 )
 
-tar -czvf archlive/airootfs/tools/jconfigs.tar.gz "${jconfigs[@]}"
+tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
+  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=jconfigs.tar.gz \
+  "${jconfigs[@]}"
 
 # Drop in a default network DHCP handler for ethernet conns
 mkdir -p archlive/airootfs/etc/systemd/network/
