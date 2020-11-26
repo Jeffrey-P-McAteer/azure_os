@@ -23,6 +23,9 @@ echo 'azure-angel' > /etc/hostname
 # Just in case pacstrap didn't already do this
 mkinitcpio -P
 
+# Bootloader
+bootctl install
+
 # Package + signing stuff
 mkdir -p /etc/pacman.d/gnupg
 echo 'keyserver hkp://pool.key-servers.net' >> /etc/pacman.d/gnupg/gpg.conf
