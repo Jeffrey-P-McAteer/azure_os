@@ -164,7 +164,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    strace nmap
+    strace nmap intel-ucode
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -174,7 +174,7 @@ echo 'WARNING: installing linux-ck'
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    intel-ucode linux-ck || true # Don't fail on this if we don't get it
+    linux-ck || true # Don't fail on this if we don't get it
 
 # Add linux-ck boot entry
 ROOT_PARTUUID=$(blkid | grep -i 'AzureOS-Root' | sed 's/.*PARTUUID="//g' | sed 's/".*//g' | tr -d '\n')
