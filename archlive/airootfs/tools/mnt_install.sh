@@ -64,7 +64,7 @@ echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheelsetup
   git clone https://aur.archlinux.org/yay-git.git
   chown -R jeffrey:jeffrey yay-git
   cd /opt/yay-git
-  sudo -u jeffrey -c 'makepkg -si'
+  sudo -u jeffrey makepkg -si
 )
 
 
