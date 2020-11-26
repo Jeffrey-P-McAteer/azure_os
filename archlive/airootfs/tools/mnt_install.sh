@@ -124,7 +124,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    mingw-w64-gcc-base mingw-w64-gcc
+    mingw-w64-gcc
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -174,6 +174,22 @@ initrd /intel-ucode.img
 initrd /initramfs-linux-ck.img
 options root=PARTUUID=$ROOT_PARTUUID rootfstype=btrfs add_efi_memmap mitigations=off loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0 noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off intel_pstate=passive pti=off
 
+EOF
+
+cat <<EOF >/boot/loader/entries/azureos.conf
+title Azure OS
+linux /vmlinuz-linux
+initrd /intel-ucode.img
+initrd /initramfs-linux.img
+options root=PARTUUID=$ROOT_PARTUUID rootfstype=btrfs add_efi_memmap mitigations=off loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0 noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off intel_pstate=passive pti=off
+
+EOF
+
+cat <<EOF >/boot/loader/loader.conf
+#console-mode keep
+console-mode max
+timeout 2
+default azureos.conf
 EOF
 
 # Add an example wifi network
