@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="asure-os-baseline"
+iso_name="azure-os-baseline"
 iso_label="ARCH_$(date +%Y%m)"
 iso_publisher="Jeffrey McAteer <jeffrey.p.mcateer@gmail.com>"
 iso_application="Azure OS"
