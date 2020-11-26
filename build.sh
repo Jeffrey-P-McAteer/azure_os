@@ -46,6 +46,8 @@ jconfigs=(
   '/j/.config/sublime-text-3/'
   '/j/.config/yay/config.json'
   '/j/.fonts/'
+
+  '/j/.zshrc'
   '/j/.oh-my-zsh/'
   
   '/j/.icons/default/index.theme'
