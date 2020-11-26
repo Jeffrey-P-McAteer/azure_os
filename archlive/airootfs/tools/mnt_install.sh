@@ -56,6 +56,8 @@ passwd jeffrey
 # Ensure wheel group has sudo rights
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheelsetup
 
+# Install deps to makepkg
+pacman -S base-devel
 
 # use jeffrey user to install yay
 
