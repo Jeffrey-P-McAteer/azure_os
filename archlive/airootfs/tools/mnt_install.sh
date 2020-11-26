@@ -57,8 +57,13 @@ ln -nsf /usr/lib/systemd/system/systemd-resolved.service /etc/systemd/system/mul
 # ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 pacman -S systemd-resolvconf # replaces /usr/bin/resolvconf with systemd so it can manage 3rdparty requests
+if ! grep 127 /etc/resolv.conf ; then
+  cat <<EOF >>/etc/resolv.conf
+nameserver 127.0.0.53
+options edns0 trust-ad
 
-
+EOF
+fi
 
 # Create jeffrey user
 useradd \

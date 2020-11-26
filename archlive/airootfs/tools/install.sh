@@ -224,12 +224,8 @@ cat <<EOF >/mnt/etc/resolv.conf
 nameserver 127.0.0.53
 options edns0 trust-ad
 EOF
-chattr +i /mnt/etc/resolv.conf
-
 
 echo 'Running arch-chroot, please run /tools/mnt_install.sh'
-
-systemctl restart systemd-resolved # no idea, but we have some dns issues with git/yay that do not present in ping/curl
 
 arch-chroot /mnt
 
