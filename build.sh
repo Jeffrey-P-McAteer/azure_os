@@ -58,6 +58,9 @@ jconfigs=(
   # Documents
   '/j/docs/pw'
 
+  # Keep my secrets
+  '/j/ident/'
+
   # MY applications (reasonably sized I assure... nobody)
   '/j/bins/azure-os/'
   '/j/bins/azure-angel-backup'
