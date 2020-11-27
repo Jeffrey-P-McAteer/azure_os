@@ -126,12 +126,12 @@ echo 'WARNING: lots of apps going in'
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    sublime-text-3 oh-my-zsh-git tree 
+    sublime-text-3 oh-my-zsh-git tree archiso
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
-    
+
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
