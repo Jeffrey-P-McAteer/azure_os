@@ -61,6 +61,10 @@ jconfigs=(
   '/j/bins/import-wp.sh'
   '/j/bins/eventmgr.py'
   '/j/bins/srvmgr.py'
+  '/j/bins/backlight-up'
+  '/j/bins/backlight-down'
+  '/j/bins/volume-up'
+  '/j/bins/volume-down'
   
   # enhancements to existing programs
   '/j/bins/rmpv'
