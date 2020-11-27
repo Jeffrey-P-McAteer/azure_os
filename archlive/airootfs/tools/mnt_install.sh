@@ -158,7 +158,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    radicale qemu
+    radicale qemu edk2-ovmf
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -171,6 +171,8 @@ sudo -u jeffrey yay -S \
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     jdk-openjdk jd-gui-bin pavucontrol pa-applet-git python python-pip xpra discount evolution
+
+
 
 # Work stuff
 sudo -u jeffrey yay -S \

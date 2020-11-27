@@ -56,6 +56,7 @@ jconfigs=(
 
   # MY applications (reasonably sized I assure... nobody)
   '/j/bins/azure-os/'
+  '/j/bins/azure-angel-backup'
   '/j/bins/music-fetch.py'
   '/j/bins/import-wp.sh'
   '/j/bins/eventmgr.py'
