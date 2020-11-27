@@ -73,6 +73,7 @@ fi
 # Create jeffrey user
 useradd \
   --home /j/ \
+  --shell /bin/zsh \
   --groups wheel,lp \
   -m jeffrey
 
