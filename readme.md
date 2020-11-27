@@ -7,6 +7,7 @@ Quickstart:
 
 ```bash
 sudo rm -rf archlive/out archlive/work ; ./build.sh
+sudo dd if=archlive/out/azure-os-baseline-2020.11.26-x86_64.iso of=/dev/sda status=progress oflag=sync bs=4M
 ```
 
 # Why?
