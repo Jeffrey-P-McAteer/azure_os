@@ -158,7 +158,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    radicale qemu edk2-ovmf
+    radicale qemu edk2-ovmf unclutter
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
