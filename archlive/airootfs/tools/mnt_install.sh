@@ -201,6 +201,7 @@ sudo -u jeffrey python3 -m pip install --user pyftpdlib
 
 
 systemctl enable radicale
+systemctl enable iwd
 
 
 echo 'WARNING: installing linux-ck'
