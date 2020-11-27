@@ -79,7 +79,7 @@ jconfigs=(
   '/j/bins/gdbbin'
   '/j/bins/pause-procs'
 
-  #'/j/bin/' # TODO uncomment when we've cleaned it out
+  '/j/bin/'
 
   # Applications + stupidly large things
   '/j/.mozilla/'
