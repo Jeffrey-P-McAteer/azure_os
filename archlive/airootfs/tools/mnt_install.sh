@@ -228,7 +228,8 @@ SSID=MacHome 5ghz
 # BSSID=aa:bb:cc:dd:ee:ff
 
 [Network]
-DHCP=true
+#DHCP=true
+DHCP=ipv4
 
 EOF
 # Default ethernet
@@ -237,7 +238,8 @@ cat <<EOF >/etc/systemd/network/24-default-ethernet.network
 Name=en*
 
 [Network]
-DHCP=true
+#DHCP=true
+DHCP=ipv4
 
 EOF
 
