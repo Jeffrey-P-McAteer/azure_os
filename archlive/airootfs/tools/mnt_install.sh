@@ -221,10 +221,10 @@ sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs
 ####
 
 # Default wifi network
-cat <<EOF >/etc/systemd/network/24-home-wifi.network
+cat <<EOF >/etc/systemd/network/24-default-wifi.network
 [Match]
 Name=wl*
-SSID=MacHome 5ghz
+# SSID=AP Name 5ghz
 # BSSID=aa:bb:cc:dd:ee:ff
 
 [Network]
