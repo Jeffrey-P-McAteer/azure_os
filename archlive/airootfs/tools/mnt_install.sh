@@ -172,6 +172,32 @@ sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     jdk-openjdk jd-gui-bin pavucontrol pa-applet-git python python-pip xpra discount evolution
 
+# Work stuff
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    ccid opensc pcsc-tools
+
+cat <<EOF >/etc/opensc.conf
+app default {
+  # debug = 3;
+  # debug_file = opensc-debug.txt;
+  framework pkcs15 {
+    # use_file_caching = true;
+  }
+}
+enable_pinpad = false
+
+EOF
+
+systemctl enable pcscd.socket
+wget -O /tmp/certificates_pkcs7_v5-6_dod.zip 'https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/certificates_pkcs7_v5-6_dod.zip'
+chown jeffrey:jeffrey /tmp/certificates_pkcs7_v5-6_dod.zip
+sudo -u jeffrey mkdir -p /j/downloads/
+sudo -u jeffrey unzip /tmp/certificates_pkcs7_v5-6_dod.zip -d /j/downloads/certificates_pkcs7_v5-6_dod
+# We'll just have to remember to to browser-specific installs on the first boot
+
+
+
 echo 'WARNING: installing linux-ck'
 
 sudo -u jeffrey yay -S \
