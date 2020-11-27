@@ -66,7 +66,8 @@ jconfigs=(
   #'/j/bin/' # TODO uncomment when we've cleaned it out
 
   # Applications + stupidly large things
-  #'/j/.mozilla/'
+  '/j/.mozilla/'
+  
 )
 
 tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \

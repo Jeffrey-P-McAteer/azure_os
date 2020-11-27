@@ -169,7 +169,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    jdk-openjdk jd-gui-bin pavucontrol python python-pip xpra discount evolution
+    jdk-openjdk jd-gui-bin pavucontrol pa-applet-git python python-pip xpra discount evolution
 
 echo 'WARNING: installing linux-ck'
 
