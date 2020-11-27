@@ -90,6 +90,8 @@ jeffrey ALL=(ALL) ALL
 Defaults:jeffrey timestamp_timeout=900
 Defaults:jeffrey !tty_tickets
 
+jeffrey ALL=(ALL) NOPASSWD: /usr/bin/mount, /usr/bin/umount, /usr/bin/cpupower, /usr/bin/rtcwake
+
 EOJC
 
 # Grant root rights to ALL (this is removed at the end)
