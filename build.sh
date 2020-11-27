@@ -56,11 +56,14 @@ jconfigs=(
 
   # MY applications (reasonably sized I assure... nobody)
   '/j/bins/azure-os/'
-  '/j/bins/music_fetch.py' # todo rename with -
-  '/j/bins/import-wp.sh' # todo rename
+  '/j/bins/music-fetch.py'
+  '/j/bins/import-wp.sh'
+  '/j/bins/eventmgr.py'
+  '/j/bins/srvmgr.py'
   
   # enhancements to existing programs
   '/j/bins/rmpv'
+  '/j/bins/mpvep'
   '/j/bins/gdbbin'
   '/j/bins/pause-procs'
 
@@ -69,9 +72,16 @@ jconfigs=(
   # Applications + stupidly large things
   '/j/.mozilla/'
   
+  # Personal OS stuff
+  '/etc/systemd/system/eventmgr.service'
+  '/etc/systemd/system/srvmgr.service'
+
+  # OS stuff
+  '/etc/radicale/'
+  '/var/lib/radicale'
 )
 
-tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
+sudo tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
   --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=jconfigs.tar.gz \
   "${jconfigs[@]}"
 

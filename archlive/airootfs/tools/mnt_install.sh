@@ -158,7 +158,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    radicale
+    radicale qemu
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -196,6 +196,11 @@ sudo -u jeffrey mkdir -p /j/downloads/
 sudo -u jeffrey unzip /tmp/certificates_pkcs7_v5-6_dod.zip -d /j/downloads/certificates_pkcs7_v5-6_dod
 # We'll just have to remember to to browser-specific installs on the first boot
 
+
+sudo -u jeffrey python3 -m pip install --user pyftpdlib
+
+
+systemctl enable radicale
 
 
 echo 'WARNING: installing linux-ck'
@@ -314,6 +319,8 @@ jdirs=(
   '/j/proj' # projects
   '/j/docs' # documents
 
+  '/j/www' # public data served over ftp, http, https, friggin' telnet, and a samba server. This is what srvmgr.py performs.
+
   '/j/.ssh/controls' # used for ssh sockets in master-slave mode
 )
 for jd in "${jdirs[@]}" ; do
@@ -343,6 +350,10 @@ tar -C / -zxvf /tools/jconfigs.tar.gz
 
 # Make sure jeff can access his own stuff
 chown -R jeffrey:jeffrey /j/
+
+# Enable some services we copied in
+systemctl enable eventmgr
+systemctl enable srvmgr
 
 # Remove rights we granted root earlier; yeah it's stupid but we're being civilized here.
 rm /etc/sudoers.d/installstuff || true
