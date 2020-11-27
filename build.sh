@@ -54,6 +54,9 @@ jconfigs=(
   '/j/.config/gtk-3.0'
   '/j/.config/gtk-2.0'
 
+  # Documents
+  '/j/docs/pw'
+
   # MY applications (reasonably sized I assure... nobody)
   '/j/bins/azure-os/'
   '/j/bins/azure-angel-backup'
