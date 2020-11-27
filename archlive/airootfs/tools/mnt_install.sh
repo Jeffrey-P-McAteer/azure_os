@@ -200,6 +200,7 @@ sudo -u jeffrey unzip /tmp/certificates_pkcs7_v5-6_dod.zip -d /j/downloads/certi
 
 
 sudo -u jeffrey python3 -m pip install --user pyftpdlib
+python3 -m pip install --user pyftpdlib
 
 
 systemctl enable radicale
