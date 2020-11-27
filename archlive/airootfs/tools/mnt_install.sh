@@ -166,7 +166,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    strace nmap intel-ucode tunsafe
+    strace nmap intel-ucode tunsafe alsa-utils
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -220,7 +220,7 @@ added_groups=(
   radicale
   xpra
 )
-for g in "${arrayName[@]}" ; do
+for g in "${added_groups[@]}" ; do
   echo "Adding jeffrey to $g"
   usermod -a -G $g jeffrey || true
 done
@@ -284,11 +284,13 @@ jdirs=(
   '/j/photos'     # contains:
       # bb/<blackberry camera files, synced on USB conn>
       # hourly/<timestamped pics of webcam every hour, post-processed into other projects>
-      # TODO
+      # wallpaper/<category>; the only files we have will be in wallpaper/originals, categories contain symlinks
   '/j/proj' # projects
-  ''
+  '/j/docs' # documents
+
+  '/j/.ssh/controls' # used for ssh sockets in master-slave mode
 )
-for jd in jdirs ; do
+for jd in "${jdirs[@]}" ; do
   echo "Creating directory $jd"
   mkdir -p "$jd"
 done
@@ -297,7 +299,7 @@ jfiles=(
   '/j/tasks.toml' # [[task]].name="do thing X"/.period="24h" ; polled by /j/bins/eventmgr.py every 60s -> 300s? keep it opinionated.
 
 )
-for jf in jfiles ; do
+for jf in "${jfiles[@]}" ; do
   echo "Touching file $jf"
   touch "$jf"
 done
