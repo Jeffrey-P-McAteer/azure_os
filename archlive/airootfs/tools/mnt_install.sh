@@ -166,7 +166,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    strace nmap intel-ucode tunsafe alsa-utils
+    strace nmap intel-ucode tunsafe alsa-utils pulseaudio pulseaudio-alsa
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
@@ -315,6 +315,8 @@ done
 # These have passed the quality requirement 100%.
 tar -C / -zxvf /tools/jconfigs.tar.gz
 
+# Make sure jeff can access his own stuff
+chown -R jeffrey:jeffrey /j/
 
 # Remove rights we granted root earlier; yeah it's stupid but we're being civilized here.
 rm /etc/sudoers.d/installstuff || true
