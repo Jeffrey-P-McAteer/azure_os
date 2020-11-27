@@ -194,11 +194,6 @@ enable_pinpad = false
 EOF
 
 systemctl enable pcscd.socket
-wget -O /tmp/certificates_pkcs7_v5-6_dod.zip 'https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/certificates_pkcs7_v5-6_dod.zip'
-chown jeffrey:jeffrey /tmp/certificates_pkcs7_v5-6_dod.zip
-sudo -u jeffrey mkdir -p /j/downloads/
-sudo -u jeffrey unzip /tmp/certificates_pkcs7_v5-6_dod.zip -d /j/downloads/certificates_pkcs7_v5-6_dod
-# We'll just have to remember to to browser-specific installs on the first boot
 
 
 sudo -u jeffrey python3 -m pip install --user pyftpdlib
