@@ -209,6 +209,21 @@ EOF
 # install rust in jeff's account
 sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
 
+# Add jeff to useful groups
+added_groups=(
+  video
+  audio
+  disk
+  avahi
+  cups
+  power
+  radicale
+  xpra
+)
+for g in "${arrayName[@]}" ; do
+  echo "Adding jeffrey to $g"
+  usermod -a -G $g jeffrey || true
+done
 
 ####
 ##
