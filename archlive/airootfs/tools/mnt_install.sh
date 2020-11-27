@@ -130,7 +130,8 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
+    xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
+    
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
