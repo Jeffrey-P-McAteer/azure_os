@@ -47,6 +47,7 @@ jconfigs=(
   '/j/.config/yay/config.json'
   '/j/.fonts/'
 
+  '/j/.profile'
   '/j/.zshrc'
   '/j/.oh-my-zsh/'
   
