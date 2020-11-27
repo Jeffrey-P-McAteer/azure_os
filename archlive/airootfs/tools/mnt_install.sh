@@ -195,6 +195,11 @@ EOF
 
 systemctl enable pcscd.socket
 
+cat <<EOF >>/etc/pulse/default.pa
+load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
+
+EOF
+
 
 sudo -u jeffrey python3 -m pip install --user pyftpdlib
 python3 -m pip install --user pyftpdlib
