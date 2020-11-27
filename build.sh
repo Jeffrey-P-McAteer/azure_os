@@ -51,7 +51,8 @@ jconfigs=(
   '/j/.oh-my-zsh/'
   
   '/j/.icons/default/index.theme'
-  '/j/.gtkrc-2.0'
+  '/j/.config/gtk-3.0'
+  '/j/.config/gtk-2.0'
 
   # MY applications (reasonably sized I assure... nobody)
   '/j/bins/azure-os/'
