@@ -263,6 +263,11 @@ echo 'WARNING: installing linux-ck'
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
+    linux-headers || true # we use these for DKMS modules, so....
+
+
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
     linux-ck || true # Don't fail on this if we don't get it
 
 # Add linux-ck boot entry
