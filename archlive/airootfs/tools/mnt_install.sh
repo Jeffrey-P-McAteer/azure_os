@@ -250,6 +250,9 @@ EOF
 sudo -u jeffrey python3 -m pip install --user pyftpdlib
 python3 -m pip install --user pyftpdlib
 
+# More python libs for other projects
+#sudo -u jeffrey python3 -m pip install --user tensorflow
+
 
 systemctl enable radicale
 systemctl enable iwd
