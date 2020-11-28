@@ -48,6 +48,7 @@ jconfigs=(
   '/j/.fonts/'
 
   '/j/.profile'
+  '/j/.zprofile'
   '/j/.zshrc'
   '/j/.oh-my-zsh/'
   
