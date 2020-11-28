@@ -8,3 +8,7 @@ yay -S libtensorflow-lite
 yay -S v4l2loopback-dkms
 yay -S vtk
 
+yay -S gtkglext
+
+yay -S picom
+
