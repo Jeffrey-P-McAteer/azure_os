@@ -176,7 +176,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    lftp netkit-telnet-ssl cpupower
+    lftp netkit-telnet-ssl cpupower gdb
 
 # Work stuff
 sudo -u jeffrey yay -S \
