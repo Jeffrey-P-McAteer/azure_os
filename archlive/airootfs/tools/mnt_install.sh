@@ -180,7 +180,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    youtube-dl exiftool jq || true
+    youtube-dl exiftool jq socat whois || true
 
 # Work stuff
 sudo -u jeffrey yay -S \
