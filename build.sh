@@ -59,6 +59,8 @@ jconfigs=(
   # Documents
   '/j/docs/pw'
 
+  '/j/photos'
+
   # Keep my secrets
   '/j/ident/'
 
