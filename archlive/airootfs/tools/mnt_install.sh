@@ -252,6 +252,7 @@ python3 -m pip install --user pyftpdlib
 
 # More python libs for other projects
 #sudo -u jeffrey python3 -m pip install --user tensorflow
+sudo -u jeffrey python3 -m pip install --user flameprof
 
 
 systemctl enable radicale
