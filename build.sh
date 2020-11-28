@@ -94,6 +94,8 @@ jconfigs=(
   '/etc/systemd/nspawn/steamcontainer.nspawn'
   '/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
 
+  '/etc/X11/xorg.conf.d/70-synaptics.conf'
+
   # OS stuff
   '/etc/radicale/'
   '/var/lib/radicale'
