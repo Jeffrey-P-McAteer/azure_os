@@ -178,6 +178,10 @@ sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     lftp netkit-telnet-ssl cpupower gdb htop
 
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    youtube-dl exiftool || true
+
 # Work stuff
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
