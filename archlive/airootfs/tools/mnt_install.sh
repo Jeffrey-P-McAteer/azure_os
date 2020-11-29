@@ -186,13 +186,6 @@ sudo -u jeffrey yay -S \
     youtube-dl exiftool jq socat whois xdg-user-dirs || true
 
 
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    gnunet || true
-
-sudo systemctl enable gnunet || true
-
-
 
 # Work stuff
 sudo -u jeffrey yay -S \
