@@ -66,22 +66,24 @@ jconfigs=(
   '/j/ident/'
 
   # MY applications (reasonably sized I assure... nobody)
-  '/j/bins/azure-os/'
-  '/j/bins/azure-angel-backup'
-  '/j/bins/music-fetch.py'
-  '/j/bins/import-wp.sh'
-  '/j/bins/eventmgr.py'
-  '/j/bins/srvmgr.py'
-  '/j/bins/backlight-up'
-  '/j/bins/backlight-down'
-  '/j/bins/volume-up'
-  '/j/bins/volume-down'
+  # '/j/bins/azure-os/'
+  # '/j/bins/azure-angel-backup'
+  # '/j/bins/music-fetch.py'
+  # '/j/bins/import-wp.sh'
+  # '/j/bins/eventmgr.py'
+  # '/j/bins/srvmgr.py'
+  # '/j/bins/backlight-up'
+  # '/j/bins/backlight-down'
+  # '/j/bins/volume-up'
+  # '/j/bins/volume-down'
+  # '/j/bins/d'
+  '/j/bins/'
   
   # enhancements to existing programs
-  '/j/bins/rmpv'
-  '/j/bins/mpvep'
-  '/j/bins/gdbbin'
-  '/j/bins/pause-procs'
+  # '/j/bins/rmpv'
+  # '/j/bins/mpvep'
+  # '/j/bins/gdbbin'
+  # '/j/bins/pause-procs'
 
   '/j/bin/'
 
