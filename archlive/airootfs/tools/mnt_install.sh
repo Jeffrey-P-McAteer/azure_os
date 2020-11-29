@@ -167,7 +167,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    firefox libreoffice chromium blender gimp inkscape
+    firefox libreoffice chromium blender gimp xcftools inkscape
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
