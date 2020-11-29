@@ -97,6 +97,8 @@ jconfigs=(
 
   '/etc/X11/xorg.conf.d/70-synaptics.conf'
 
+  '/etc/modules-load.d/intel-gvt-g.conf'
+
   # OS stuff
   '/etc/radicale/'
   '/var/lib/radicale'
