@@ -263,6 +263,8 @@ python3 -m pip install --user pyftpdlib
 #sudo -u jeffrey python3 -m pip install --user tensorflow
 sudo -u jeffrey python3 -m pip install --user flameprof
 
+# For blog build.py
+sudo -u jeffrey python3 -m pip install --user htmlmin
 
 systemctl enable radicale
 systemctl enable iwd
