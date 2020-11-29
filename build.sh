@@ -57,6 +57,8 @@ jconfigs=(
   '/j/.config/gtk-3.0'
   '/j/.config/gtk-2.0'
 
+  '/j/.config/rclone'
+
   # Documents
   '/j/docs/pw'
 
