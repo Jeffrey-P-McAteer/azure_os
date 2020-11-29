@@ -163,7 +163,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    radicale qemu libguestfs edk2-ovmf unclutter xautolock rsync
+    radicale qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
