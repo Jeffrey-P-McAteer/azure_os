@@ -277,7 +277,8 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    linux-ck || true # Don't fail on this if we don't get it
+    linux-ck linux-ck-headers || true # Don't fail on this if we don't get it
+
 
 # Add linux-ck boot entry
 ROOT_PARTUUID=$(blkid | grep -i 'AzureOS-Root' | sed 's/.*PARTUUID="//g' | sed 's/".*//g' | tr -d '\n')
@@ -304,7 +305,7 @@ cat <<EOF >/boot/loader/loader.conf
 #console-mode keep
 console-mode max
 timeout 2
-default azureos.conf
+default azureosck.conf
 EOF
 
 # install rust in jeff's account
