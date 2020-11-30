@@ -58,7 +58,7 @@ jconfigs=(
   '/j/.config/gtk-2.0'
 
   '/j/.config/rclone'
-  
+
   # Documents
   '/j/docs/pw'
 
@@ -95,6 +95,7 @@ jconfigs=(
   # Personal OS stuff
   '/etc/systemd/system/eventmgr.service'
   '/etc/systemd/system/srvmgr.service'
+  '/etc/systemd/system/portfwd.service'
 
   '/etc/systemd/nspawn/steamcontainer.nspawn'
   '/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
