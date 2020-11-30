@@ -183,7 +183,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    youtube-dl exiftool jq socat whois xdg-user-dirs || true
+    youtube-dl exiftool jq socat whois xdg-user-dirs unzip || true
 
 
 
