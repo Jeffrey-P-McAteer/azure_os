@@ -171,7 +171,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    strace nmap intel-ucode tunsafe alsa-utils pulseaudio pulseaudio-alsa
+    strace nmap intel-ucode tunsafe net-tools alsa-utils pulseaudio pulseaudio-alsa
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
