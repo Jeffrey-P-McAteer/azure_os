@@ -185,6 +185,10 @@ sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     youtube-dl exiftool jq socat whois xdg-user-dirs unzip || true
 
+# I use ngrok to forward ports from behind routers
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    ngrok-bin || true
 
 
 # Work stuff
