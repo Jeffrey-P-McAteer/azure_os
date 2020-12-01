@@ -185,9 +185,10 @@ sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     youtube-dl exiftool jq socat whois xdg-user-dirs unzip || true
 
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    asuka-git || true
+# sudo -u jeffrey yay -S \
+#     --noconfirm --answerdiff=None \
+#     asuka-git || true # Removed b/c it uses an entire rust install; I can instead to the following:
+# git clone https://aur.archlinux.org/asuka-git.git ; cd asuka-git ; vim PKGBUILD ; makepkg -si
 
 # Work stuff
 sudo -u jeffrey yay -S \
