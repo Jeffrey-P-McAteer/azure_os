@@ -185,7 +185,9 @@ sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     youtube-dl exiftool jq socat whois xdg-user-dirs unzip || true
 
-
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    asuka-git || true
 
 # Work stuff
 sudo -u jeffrey yay -S \
@@ -258,6 +260,9 @@ EOF
 
 sudo -u jeffrey python3 -m pip install --user pyftpdlib
 python3 -m pip install --user pyftpdlib
+
+sudo -u jeffrey python3 -m pip install --user jetforce
+python3 -m pip install --user jetforce
 
 # More python libs for other projects
 #sudo -u jeffrey python3 -m pip install --user tensorflow
