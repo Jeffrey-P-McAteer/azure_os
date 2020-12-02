@@ -80,19 +80,16 @@ useradd \
 echo "Type new password for user 'jeffrey':"
 passwd jeffrey
 
-# Ensure wheel group has sudo rights
-# echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheelsetup
-# echo '%sudo ALL=(ALL) ALL' >> /etc/sudoers.d/wheelsetup
+# cat <<EOJC > /etc/sudoers.d/jeffrey
+# jeffrey ALL=(ALL) ALL
+# Defaults:jeffrey timestamp_timeout=900
+# Defaults:jeffrey !tty_tickets
 
-# EVEN Better; just make me the special one.
-cat <<EOJC > /etc/sudoers.d/jeffrey
-jeffrey ALL=(ALL) ALL
-Defaults:jeffrey timestamp_timeout=900
-Defaults:jeffrey !tty_tickets
+# jeffrey ALL=(ALL) NOPASSWD: /usr/bin/mount, /usr/bin/umount, /usr/bin/cpupower, /usr/bin/rtcwake
 
-jeffrey ALL=(ALL) NOPASSWD: /usr/bin/mount, /usr/bin/umount, /usr/bin/cpupower, /usr/bin/rtcwake
+# EOJC
+# This is now copied in the tarball as /etc/sudoers.d/jeffrey
 
-EOJC
 
 # Grant root rights to ALL (this is removed at the end)
 echo 'root ALL = (ALL) NOPASSWD: ALL' > /etc/sudoers.d/installstuff

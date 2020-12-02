@@ -107,6 +107,8 @@ jconfigs=(
   # OS stuff
   '/etc/radicale/'
   '/var/lib/radicale'
+
+  '/etc/sudoers.d/jeffrey'
 )
 
 sudo tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
