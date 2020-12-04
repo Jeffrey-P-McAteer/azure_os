@@ -59,6 +59,8 @@ jconfigs=(
 
   '/j/.config/rclone'
 
+  '/j/.streamlinkrc'
+
   # Documents
   '/j/docs/pw'
 

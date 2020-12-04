@@ -156,7 +156,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget
+    mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
