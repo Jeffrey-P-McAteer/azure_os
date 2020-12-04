@@ -184,7 +184,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    gmni-git || true
+    gmni-git aspell aspell-en || true
 
 # Work stuff
 sudo -u jeffrey yay -S \
