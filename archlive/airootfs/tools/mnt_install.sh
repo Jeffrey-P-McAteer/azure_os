@@ -186,10 +186,24 @@ sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     gmni-git aspell aspell-en || true
 
+# USB-C graphics dock stuff
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    bolt || true
+
+
+
+
+
+
+
+
 # Work stuff
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     ccid opensc pcsc-tools
+
+
 
 cat <<EOF >/etc/opensc.conf
 app default {

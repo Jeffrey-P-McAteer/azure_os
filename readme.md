@@ -36,3 +36,11 @@ as well as some less-than-official people who are doing similar things:
  - https://www.google.com/search?q=arch+linux+install+script+-site%3Aarchlinux.org
 
 
+# Notes
+
+```
+pacman -Q | wc -l # 827 packages as of 2020-12-05
+
+```
+
+
