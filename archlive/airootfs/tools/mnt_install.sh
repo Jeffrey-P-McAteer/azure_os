@@ -189,7 +189,7 @@ sudo -u jeffrey yay -S \
 # USB-C graphics dock stuff
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    xf86-video-intel bolt || true
+    xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt || true
 
 
 
