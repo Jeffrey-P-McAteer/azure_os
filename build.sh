@@ -111,6 +111,8 @@ jconfigs=(
   '/var/lib/radicale'
 
   '/etc/sudoers.d/jeffrey'
+  '/etc/udev/rules.d/99-thunderbolt-auto-auth.rules' # ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
+  
 )
 
 sudo tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
