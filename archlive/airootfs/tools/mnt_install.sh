@@ -191,7 +191,9 @@ sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
     xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt || true
 
-
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    iw || true
 
 
 

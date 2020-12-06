@@ -98,6 +98,7 @@ jconfigs=(
   '/etc/systemd/system/eventmgr.service'
   '/etc/systemd/system/srvmgr.service'
   '/etc/systemd/system/portfwd.service'
+  '/etc/systemd/network/' # copies ALL my network files
 
   '/etc/systemd/nspawn/steamcontainer.nspawn'
   '/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
