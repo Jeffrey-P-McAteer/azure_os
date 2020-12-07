@@ -68,6 +68,7 @@ jconfigs=(
 
   # Keep my secrets
   '/j/ident/'
+  '/j/.gnupg/' # gpg --list-secret-keys --keyid-format LONG
 
   # MY applications (reasonably sized I assure... nobody)
   # '/j/bins/azure-os/'
