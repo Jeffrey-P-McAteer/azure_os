@@ -40,6 +40,7 @@ as well as some less-than-official people who are doing similar things:
 
 ```
 pacman -Q | wc -l # 827 packages as of 2020-12-05
+pacman -Q | wc -l # 855 packages as of 2020-12-07
 
 ```
 
