@@ -108,6 +108,9 @@ jconfigs=(
 
   '/etc/modules-load.d/intel-gvt-g.conf'
 
+  # Not sure what adds the thinkpad_acpi module but it didn't have to be installed
+  '/etc/modprobe.d/thinkpad_acpi.conf'
+
   # OS stuff
   '/etc/radicale/'
   '/var/lib/radicale'
