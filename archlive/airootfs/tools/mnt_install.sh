@@ -193,7 +193,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    iw texlive-most meson ninja || true
+    iw texlive-most meson ninja valgrind || true
 
 
 
