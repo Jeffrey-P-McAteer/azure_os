@@ -196,6 +196,9 @@ sudo -u jeffrey yay -S \
     iw texlive-most meson ninja valgrind || true
 
 
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
+    intel-undervolt || true
 
 
 
