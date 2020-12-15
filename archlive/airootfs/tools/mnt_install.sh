@@ -290,6 +290,7 @@ sudo -u jeffrey python3 -m pip install --user htmlmin
 systemctl enable radicale
 systemctl enable iwd
 
+systemctl enable intel-undervolt
 
 echo 'WARNING: installing linux-ck'
 
