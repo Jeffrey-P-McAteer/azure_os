@@ -117,6 +117,8 @@ jconfigs=(
   '/etc/radicale/'
   '/var/lib/radicale'
 
+  '/etc/X11/xorg.conf.d/51-joystick.conf'
+
   '/etc/sudoers.d/jeffrey'
   '/etc/udev/rules.d/99-thunderbolt-auto-auth.rules' # ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
   

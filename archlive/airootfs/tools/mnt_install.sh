@@ -152,7 +152,7 @@ systemctl enable cups.socket || true
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics wpa_supplicant
+    dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant || true
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
