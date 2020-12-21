@@ -141,7 +141,11 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git noto-fonts noto-fonts-cjk terminus-font-otb
+    rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git \
+    noto-fonts noto-fonts-cjk terminus-font-otb \
+    adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts \
+    opendesktop-fonts \
+    adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
