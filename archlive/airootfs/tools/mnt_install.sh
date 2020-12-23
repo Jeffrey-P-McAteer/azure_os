@@ -202,7 +202,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    intel-undervolt fping || true
+    intel-undervolt fping usbutils || true
 
 
 
