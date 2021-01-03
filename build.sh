@@ -95,6 +95,7 @@ jconfigs=(
   # Applications + stupidly large things
   '/j/.mozilla/'
   '/j/.clikan.yaml'
+  '/j/.clikan.dat'
   
   # Personal OS stuff
   '/etc/systemd/system/eventmgr.service'
