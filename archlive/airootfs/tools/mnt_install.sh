@@ -295,6 +295,9 @@ sudo -u jeffrey python3 -m pip install --user flameprof
 # For blog build.py
 sudo -u jeffrey python3 -m pip install --user htmlmin
 
+# For cli tool /j/.local/bin/clikan
+sudo -u jeffrey python3 -m pip install --user clikan
+
 systemctl enable radicale
 systemctl enable iwd
 
