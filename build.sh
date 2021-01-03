@@ -110,6 +110,7 @@ jconfigs=(
 
   # Not sure what adds the thinkpad_acpi module but it didn't have to be installed
   '/etc/modprobe.d/thinkpad_acpi.conf'
+  '/etc/modprobe.d/nobeep.conf'
 
   '/etc/intel-undervolt.conf'
 

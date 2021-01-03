@@ -133,6 +133,10 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
+    weston || true
+
+sudo -u jeffrey yay -S \
+    --noconfirm --answerdiff=None \
     i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
 
 sudo -u jeffrey yay -S \
