@@ -134,7 +134,9 @@ jeff_packages=(
   adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
   opendesktop-fonts
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
-  lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst fcitx fcitx-configtool
+  lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
+  # Multilang
+  fcitx fcitx-configtool fcitx-libpinyin fcitx-kkc
   dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant
   mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
   radicale qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
