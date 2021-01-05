@@ -153,7 +153,7 @@ sudo -u jeffrey yay -S \
 
 sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
+    lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst fcitx fcitx-configtool
 
 systemctl enable cups.socket || true
 

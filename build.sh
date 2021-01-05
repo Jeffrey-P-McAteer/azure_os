@@ -98,6 +98,7 @@ jconfigs=(
   '/j/.clikan.dat'
   
   # Personal OS stuff
+  '/etc/systemd/system.conf'
   '/etc/systemd/system/eventmgr.service'
   '/etc/systemd/system/srvmgr.service'
   '/etc/systemd/system/portfwd.service'
@@ -115,6 +116,8 @@ jconfigs=(
   '/etc/modprobe.d/nobeep.conf'
 
   '/etc/intel-undervolt.conf'
+
+  '/etc/makepkg.conf'
 
   # OS stuff
   '/etc/radicale/'
