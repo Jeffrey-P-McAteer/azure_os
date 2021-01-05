@@ -123,99 +123,44 @@ pacman -S --noconfirm base-devel
 
 echo 'WARNING: lots of apps going in'
 
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    sublime-text-3 oh-my-zsh-git tree archiso
+jeff_packages=(
+  sublime-text-3 oh-my-zsh-git tree archiso
+  xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
+  weston
+  i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
+  mingw-w64-gcc
+  rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
+  noto-fonts noto-fonts-cjk terminus-font-otb
+  adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
+  opendesktop-fonts
+  adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
+  lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst fcitx fcitx-configtool
+  dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant
+  mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
+  radicale qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
+  firefox libreoffice chromium blender gimp xcftools inkscape
+  strace nmap intel-ucode tunsafe net-tools alsa-utils pulseaudio pulseaudio-alsa
+  jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
+  lftp netkit-telnet-ssl cpupower gdb htop samba
+  youtube-dl exiftool jq socat whois xdg-user-dirs unzip
+  gmni-git aspell aspell-en
+  # USB-C graphics dock stuff
+  xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
+  iw texlive-most meson ninja valgrind
+  intel-undervolt fping usbutils opencl-headers
+  # Work
+  ccid opensc pcsc-tools
+)
 
-sudo -u jeffrey yay -S \
+for i in "${!jeff_packages[@]}"; do
+  echo "Installing ${jeff_packages[$i]} ($i of ${#jeff_packages[@]})"
+  sudo -u jeffrey yay -S \
     --noconfirm --answerdiff=None \
-    xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
+    "${jeff_packages[$i]}" || true
+done
 
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    weston || true
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    mingw-w64-gcc
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git \
-    noto-fonts noto-fonts-cjk terminus-font-otb \
-    adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts \
-    opendesktop-fonts \
-    adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst fcitx fcitx-configtool
 
 systemctl enable cups.socket || true
-
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant || true
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    radicale qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    firefox libreoffice chromium blender gimp xcftools inkscape
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    strace nmap intel-ucode tunsafe net-tools alsa-utils pulseaudio pulseaudio-alsa
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    lftp netkit-telnet-ssl cpupower gdb htop samba
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    youtube-dl exiftool jq socat whois xdg-user-dirs unzip || true
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    gmni-git aspell aspell-en || true
-
-# USB-C graphics dock stuff
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt || true
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    iw texlive-most meson ninja valgrind || true
-
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    intel-undervolt fping usbutils opencl-headers || true
-
-
-
-
-# Work stuff
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    ccid opensc pcsc-tools
-
 
 
 cat <<EOF >/etc/opensc.conf
