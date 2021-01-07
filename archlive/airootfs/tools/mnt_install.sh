@@ -135,6 +135,9 @@ jeff_packages=(
   opendesktop-fonts
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
   lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
+  # Spellcheckers
+  hunspell-en_US mythes-en hyphen-en hyphen libmythes
+  aspell aspell-en
   # Multilang
   fcitx fcitx-configtool fcitx-libpinyin fcitx-kkc
   dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant
@@ -145,7 +148,7 @@ jeff_packages=(
   jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
   lftp netkit-telnet-ssl cpupower gdb htop samba
   youtube-dl exiftool jq socat whois xdg-user-dirs unzip
-  gmni-git aspell aspell-en
+  gmni-git
   # HW info dumpers
   lshw
   # USB-C graphics dock stuff
