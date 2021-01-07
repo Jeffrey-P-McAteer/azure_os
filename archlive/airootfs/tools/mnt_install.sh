@@ -146,6 +146,8 @@ jeff_packages=(
   lftp netkit-telnet-ssl cpupower gdb htop samba
   youtube-dl exiftool jq socat whois xdg-user-dirs unzip
   gmni-git aspell aspell-en
+  # HW info dumpers
+  lshw
   # USB-C graphics dock stuff
   xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
   iw texlive-most meson ninja valgrind
