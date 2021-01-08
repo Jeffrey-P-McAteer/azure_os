@@ -116,6 +116,7 @@ jconfigs=(
   '/etc/modprobe.d/nobeep.conf'
 
   '/etc/intel-undervolt.conf'
+  '/etc/fwupd/daemon.conf'
 
   '/etc/makepkg.conf'
 
