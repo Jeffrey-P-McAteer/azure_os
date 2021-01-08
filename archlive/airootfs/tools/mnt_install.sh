@@ -126,6 +126,7 @@ echo 'WARNING: lots of apps going in'
 jeff_packages=(
   sublime-text-3 oh-my-zsh-git tree archiso
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
+  fwupd
   weston
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
   mingw-w64-gcc
