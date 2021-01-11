@@ -153,7 +153,7 @@ jeff_packages=(
   # HW info dumpers
   lshw
   # USB-C graphics dock stuff
-  xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
+  vulkan-intel xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
   iw texlive-most meson ninja valgrind
   intel-undervolt fping usbutils opencl-headers
   # Work
