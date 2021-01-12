@@ -149,7 +149,7 @@ jeff_packages=(
   jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
   lftp netkit-telnet-ssl cpupower gdb htop samba
   youtube-dl exiftool jq socat whois xdg-user-dirs unzip
-  gmni-git
+  gmni-git ledger
   # HW info dumpers
   lshw
   # USB-C graphics dock stuff
