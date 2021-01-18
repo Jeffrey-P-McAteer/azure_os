@@ -124,6 +124,8 @@ jconfigs=(
   '/etc/radicale/'
   '/var/lib/radicale'
 
+  '/etc/jabberd/'
+
   '/etc/X11/xorg.conf.d/51-joystick.conf'
 
   '/etc/sudoers.d/jeffrey'

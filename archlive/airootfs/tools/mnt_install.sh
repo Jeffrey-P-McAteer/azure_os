@@ -158,6 +158,8 @@ jeff_packages=(
   intel-undervolt fping usbutils opencl-headers
   # Work
   ccid opensc pcsc-tools
+  # Chat etc. 2021+ packages below.
+  profanity jabberd2
 )
 
 for i in "${!jeff_packages[@]}"; do
@@ -253,6 +255,7 @@ sudo -u jeffrey python3 -m pip install --user clikan
 
 systemctl enable radicale
 systemctl enable iwd
+systemctl enable jabberd
 
 systemctl enable intel-undervolt
 
