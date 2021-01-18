@@ -159,7 +159,7 @@ jeff_packages=(
   # Work
   ccid opensc pcsc-tools
   # Chat etc. 2021+ packages below.
-  profanity jabberd2
+  profanity jabberd2 irssi
 )
 
 for i in "${!jeff_packages[@]}"; do
