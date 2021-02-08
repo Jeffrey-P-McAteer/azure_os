@@ -122,6 +122,7 @@ pacman -S --noconfirm base-devel
 # use yay to install neat sw
 
 echo 'WARNING: lots of apps going in'
+sleep 0.5
 
 jeff_packages=(
   sublime-text-3 oh-my-zsh-git tree archiso
@@ -160,6 +161,8 @@ jeff_packages=(
   ccid opensc pcsc-tools
   # Chat etc. 2021+ packages below.
   profanity jabberd2 irssi
+  # math tools
+  octave
 )
 
 for i in "${!jeff_packages[@]}"; do
