@@ -151,6 +151,7 @@ jeff_packages=(
   lftp netkit-telnet-ssl cpupower gdb htop samba
   youtube-dl exiftool jq socat whois xdg-user-dirs unzip
   gmni-git ledger
+  gnuplot
   # HW info dumpers
   lshw
   # USB-C graphics dock stuff
