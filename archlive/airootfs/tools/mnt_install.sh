@@ -130,7 +130,8 @@ jeff_packages=(
   fwupd
   weston
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
-  mingw-w64-gcc
+  mingw-w64-gcc arm-none-eabi-gcc
+  zig
   rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
   noto-fonts noto-fonts-cjk terminus-font-otb
   adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
