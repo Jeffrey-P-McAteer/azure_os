@@ -145,7 +145,7 @@ jeff_packages=(
   fcitx fcitx-configtool fcitx-libpinyin fcitx-kkc
   dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant
   mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
-  remmina
+  remmina  libvncserver
   radicale qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
   firefox libreoffice chromium blender gimp xcftools inkscape
   strace nmap intel-ucode tunsafe net-tools alsa-utils pulseaudio pulseaudio-alsa
