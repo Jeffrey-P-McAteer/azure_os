@@ -96,6 +96,7 @@ jconfigs=(
   '/j/.mozilla/'
   '/j/.clikan.yaml'
   '/j/.clikan.dat'
+  '/j/.config/mimeapps.list'
   
   # Personal OS stuff
   '/etc/systemd/system.conf'
