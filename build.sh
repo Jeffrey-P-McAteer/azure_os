@@ -123,6 +123,8 @@ jconfigs=(
 
   # OS stuff
   '/etc/radicale/'
+  '/etc/ssl/radicale.key.pem'
+  '/etc/ssl/radicale.cert.pem'
   '/var/lib/radicale'
 
   '/etc/jabberd/'
