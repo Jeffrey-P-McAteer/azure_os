@@ -166,6 +166,8 @@ jeff_packages=(
   profanity jabberd2 irssi
   # math tools
   octave
+  # Phone stuff
+  libimobiledevice ifuse
 )
 
 for i in "${!jeff_packages[@]}"; do
