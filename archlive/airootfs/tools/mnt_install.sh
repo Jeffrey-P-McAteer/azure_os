@@ -168,6 +168,8 @@ jeff_packages=(
   octave
   # Phone stuff
   libimobiledevice ifuse
+  bluez bluez-utils pulseaudio-bluetooth
+  
 )
 
 for i in "${!jeff_packages[@]}"; do

@@ -65,6 +65,7 @@ jconfigs=(
   '/j/docs/pw'
 
   '/j/photos'
+  '/j/infra'
 
   # Keep my secrets
   '/j/ident/'
