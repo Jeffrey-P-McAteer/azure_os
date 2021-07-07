@@ -138,6 +138,7 @@ jeff_packages=(
   opendesktop-fonts
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
   lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
+  inotify-tools
   # Spellcheckers
   hunspell-en_US mythes-en hyphen-en hyphen libmythes
   aspell aspell-en
@@ -167,7 +168,7 @@ jeff_packages=(
   # math tools
   octave
   # Phone stuff
-  libimobiledevice ifuse
+  libimobiledevice ifuse libheif
   bluez bluez-utils pulseaudio-bluetooth
   
 )

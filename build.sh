@@ -51,6 +51,7 @@ jconfigs=(
   '/j/.profile'
   '/j/.zprofile'
   '/j/.zshrc'
+  '/j/.zlogin'
   '/j/.oh-my-zsh/'
   
   '/j/.icons/default/index.theme'
