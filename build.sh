@@ -107,7 +107,7 @@ jconfigs=(
   '/etc/systemd/system/portfwd.service'
   '/etc/systemd/network/' # copies ALL my network files
 
-  '/etc/systemd/nspawn/steamcontainer.nspawn'
+  #'/etc/systemd/nspawn/steamcontainer.nspawn'
   '/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
 
   '/etc/X11/xorg.conf.d/70-synaptics.conf'
@@ -137,6 +137,14 @@ jconfigs=(
   '/etc/udev/rules.d/99-thunderbolt-auto-auth.rules' # ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
   
 )
+
+
+sudo du -sh \
+  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=jconfigs.tar.gz \
+  "${jconfigs[@]}"
+
+echo 'Beginning archive...'
+sleep 1
 
 sudo tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
   --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=jconfigs.tar.gz \
