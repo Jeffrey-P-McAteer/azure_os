@@ -161,6 +161,7 @@ jeff_packages=(
   vulkan-intel xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
   iw texlive-most meson ninja valgrind
   intel-undervolt fping usbutils opencl-headers
+  displaylink xf86-video-fbdev
   # Work
   ccid opensc pcsc-tools
   # Chat etc. 2021+ packages below.
@@ -170,7 +171,8 @@ jeff_packages=(
   # Phone stuff
   libimobiledevice ifuse libheif
   bluez bluez-utils pulseaudio-bluetooth
-  
+  # DVD authoring libs
+  cdrtools libburn brasero devede 
 )
 
 for i in "${!jeff_packages[@]}"; do
