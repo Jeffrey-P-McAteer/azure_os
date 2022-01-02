@@ -162,6 +162,8 @@ jeff_packages=(
   iw texlive-most meson ninja valgrind
   intel-undervolt fping usbutils opencl-headers
   displaylink xf86-video-fbdev
+  # Movies
+  totem grilo-plugins dleyna-server
   # Work
   ccid opensc pcsc-tools
   # Chat etc. 2021+ packages below.
@@ -171,6 +173,7 @@ jeff_packages=(
   # Phone stuff
   libimobiledevice ifuse libheif
   bluez bluez-utils pulseaudio-bluetooth
+  owlink-git
   # DVD authoring libs
   cdrtools libburn brasero devede 
 )
