@@ -132,6 +132,7 @@ jeff_packages=(
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
   mingw-w64-gcc arm-none-eabi-gcc
   zig
+  mold-git
   rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
   noto-fonts noto-fonts-cjk terminus-font-otb
   adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
@@ -173,7 +174,7 @@ jeff_packages=(
   # Phone stuff
   libimobiledevice ifuse libheif
   bluez bluez-utils pulseaudio-bluetooth
-  owlink-git
+  libnl owlink-git
   # DVD authoring libs
   cdrtools libburn brasero devede 
 )
@@ -331,6 +332,10 @@ added_groups=(
   power
   radicale
   xpra
+  uucp
+  optical
+  lp
+  input
 )
 for g in "${added_groups[@]}" ; do
   echo "Adding jeffrey to $g"
