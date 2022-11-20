@@ -127,6 +127,7 @@ sleep 0.5
 jeff_packages=(
   sublime-text-3 oh-my-zsh-git tree archiso
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
+  xprintidle
   fwupd
   weston
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
@@ -163,6 +164,9 @@ jeff_packages=(
   iw texlive-most meson ninja valgrind
   intel-undervolt fping usbutils opencl-headers
   displaylink xf86-video-fbdev
+  libva-mesa-driver
+  opencl-amd vulkan-amdgpu-pro vulkan-tools
+  ddcutil
   # Movies
   totem grilo-plugins dleyna-server
   # Work
@@ -176,7 +180,15 @@ jeff_packages=(
   bluez bluez-utils pulseaudio-bluetooth
   libnl owlink-git
   # DVD authoring libs
-  cdrtools libburn brasero devede 
+  cdrtools libburn brasero devede
+  # Print utils
+  system-config-printer
+  # GPU nonsense
+  cuda md2pdf
+  # Engineering; Wolfram Alpha cli client
+  tungsten intel-undervolt
+  # Awesome environment mgr
+  guix-installer # guix
 )
 
 for i in "${!jeff_packages[@]}"; do
