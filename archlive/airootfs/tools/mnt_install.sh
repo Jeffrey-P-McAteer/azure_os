@@ -187,6 +187,7 @@ jeff_packages=(
   cuda md2pdf
   # Engineering; Wolfram Alpha cli client
   tungsten intel-undervolt
+  intel-media-driver
   # Awesome environment mgr
   guix-installer # guix
 )
