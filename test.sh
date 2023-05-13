@@ -6,6 +6,7 @@ echo "DONE! Built $ISO_IMG"
 
 echo "To clean, run:  sudo rm -rf archlive/out archlive/work"
 echo "To release keyboard press ctrl+alt+g "
+echo "To go to qemu prompt alt+ctrl+2 for things like sendkey ctrl-alt-f2"
 
 echo "Booting in qemu..."
 

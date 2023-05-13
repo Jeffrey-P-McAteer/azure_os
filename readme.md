@@ -43,6 +43,8 @@ pacman -Q | wc -l # 827 packages as of 2020-12-05
 pacman -Q | wc -l # 855 packages as of 2020-12-07
 pacman -Q | wc -l # 882 as of 2020-12-15
 pacman -Q | wc -l # 1013 as of 2020-03-10
+pacman -Q | wc -l # 1747 as of 2023-05-13 ## Time for a re-build!
+
 ```
 
 

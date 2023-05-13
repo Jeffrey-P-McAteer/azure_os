@@ -23,14 +23,20 @@ crun install_deps
 
 # archlive is checked in to source control, so this only runs if you've thrown it out.
 if ! [ -e archlive ] ; then
-  cp -r /usr/share/archiso/configs/baseline archlive
+  cp -r /usr/share/archiso/configs/baseline ./archlive
 else
   # Do fast rsync to update files; every now & then maybe we should purge everything that
   # isn't archlive/airootfs/tools?
-  sudo find archlive -type f -not -path 'archlive/airootfs/tools*' -print -delete
+  if ! [ -z "$CLEAR_ARCHLIVE" ] ; then
+    echo "Clearing arch live files..."
+    sleep 1
 
-  rsync -r /usr/share/archiso/configs/baseline/ archlive
+    sudo find ./archlive -type f -not -path './archlive/airootfs/tools*' -print -delete
 
+    rsync --verbose -r --links \
+      /usr/share/archiso/configs/baseline/ \
+      ./archlive
+  fi
 fi
 
 # Copy personal config files from my system into the install system
@@ -142,17 +148,28 @@ jconfigs=(
   
 )
 
+PACKAGE_JCONFIGS=true
+if [ -e archlive/airootfs/tools/jconfigs.tar.gz ] ; then
+  JCONFIGS_AGE_S=$(($(date +'%s') - $(stat -c '%Y' archlive/airootfs/tools/jconfigs.tar.gz)))
+  if [ "$JCONFIGS_AGE_S" -lt '900' ] ; then
+    echo "archlive/airootfs/tools/jconfigs.tar.gz is $JCONFIGS_AGE_S seconds old, not re-building!"
+    sleep 1
+    PACKAGE_JCONFIGS=false
+  fi
+fi
 
-sudo du -sh \
-  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=Index --exclude=Cache --exclude=jconfigs.tar.gz \
-  "${jconfigs[@]}"
+if "$PACKAGE_JCONFIGS" ; then
+  sudo du -sh \
+    --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=Index --exclude=Cache --exclude=jconfigs.tar.gz \
+    "${jconfigs[@]}"
 
-echo 'Beginning archive...'
-sleep 1
+  echo 'Beginning archive...'
+  sleep 1
 
-sudo tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
-  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=Index --exclude=Cache --exclude=jconfigs.tar.gz \
-  "${jconfigs[@]}"
+  sudo tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
+    --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=Index --exclude=Cache --exclude=jconfigs.tar.gz \
+    "${jconfigs[@]}"
+fi
 
 # Drop in a default network DHCP handler for ethernet conns
 mkdir -p archlive/airootfs/etc/systemd/network/
@@ -167,11 +184,6 @@ DNS=1.1.1.1
 
 EOF
 
-# Enable important services
-mkdir -p archlive/airootfs/etc/systemd/system/multi-user.target.wants/
-
-ln -nsf /usr/lib/systemd/system/systemd-networkd.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/
-ln -nsf /usr/lib/systemd/system/systemd-resolved.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/
 
 
 # Now build the iso
@@ -186,11 +198,18 @@ cd archlive
 #   -p yay \
 #   -v $(pwd)
 
+sudo pacman-db-upgrade $(pwd)/work/x86_64/airootfs/var/lib/pacman || true
+
+# Ensure getty is enabled (may fail if /work/ does not exist, but good example for later)
+systemctl --root=$(pwd)/work/x86_64/airootfs/ enable getty@ || true
+
+
 sudo mkarchiso \
   -A 'AzureOS' \
   -L 'AzureOS' \
   -P 'jeffrey mcateer <jeffrey.p.mcateer@gmail.com>' \
   -C pacman.conf \
+  -p linux \
   -v $(pwd)
 
 
