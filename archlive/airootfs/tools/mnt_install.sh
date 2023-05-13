@@ -125,21 +125,77 @@ echo 'WARNING: lots of apps going in'
 sleep 0.5
 
 jeff_packages=(
-  sublime-text-3 oh-my-zsh-git tree archiso
+  # Kernel stuff
+  linux-headers # for DKMS drivers
+
+  ## terminals
+  zsh oh-my-zsh-git
+
+  ## cli utilities
+  tree
   helix
-  xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
-  xprintidle
-  fwupd
-  weston
+  youtube-dl exiftool jq socat xdg-user-dirs unzip
+  python python-pip
+  htop
+  tungsten
+
+  ## X11 DE
+  xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
-  mingw-w64-gcc arm-none-eabi-gcc
-  zig
-  mold-git
-  rxvt-unicode ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
+  ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
   noto-fonts noto-fonts-cjk terminus-font-otb
   adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
   opendesktop-fonts
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
+
+  ## Wayland DE
+  sway
+
+  ## Audio tools
+  pipewire pipewire-audio pipewire-alsa pipewire-pulse
+  wireplumber
+
+  ## GUI software dev tools
+  sublime-text-3
+  alacritty
+
+  ## GUI normal tools
+  mpv
+  feh # TODO find wayland equivelant
+  firefox
+  libreoffice
+  #chromium
+  blender
+  gimp
+  xcftools
+  inkscape
+
+  ## Extra sw dev tools
+  mold-git
+  gdb
+  vmtouch
+
+  ## Background servers to support other devices
+  radicale
+  
+  ## Extra hardware utilities (smartcard stuff)
+  ccid opensc pcsc-tools
+
+  ## File / protocol supports
+  libimobiledevice ifuse libheif
+
+  ## Common project dependencies
+  archiso
+
+  ## Unsorted
+
+
+  acpilight
+  xprintidle
+  fwupd
+  # weston
+  # mingw-w64-gcc arm-none-eabi-gcc
+  
   lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
   inotify-tools
   # Spellcheckers
@@ -150,14 +206,13 @@ jeff_packages=(
   dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant
   mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
   remmina  libvncserver
-  radicale qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
-  firefox libreoffice chromium blender gimp xcftools inkscape
-  strace nmap intel-ucode tunsafe net-tools alsa-utils pulseaudio pulseaudio-alsa
-  jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
-  lftp netkit-telnet-ssl cpupower gdb htop samba
-  youtube-dl exiftool jq socat whois xdg-user-dirs unzip
-  gmni-git ledger
-  gnuplot
+  qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
+  strace nmap intel-ucode tunsafe net-tools
+  # alsa-utils pulseaudio pulseaudio-alsa
+  #jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
+  lftp netkit-telnet-ssl cpupower samba
+  # gmni-git ledger
+  # gnuplot
   # HW info dumpers
   lshw
   # USB-C graphics dock stuff
@@ -170,15 +225,10 @@ jeff_packages=(
   opencl-amd vulkan-amdgpu-pro vulkan-tools
   ddcutil
   # Movies
-  totem grilo-plugins dleyna-server
-  # Work
-  ccid opensc pcsc-tools
-  # Chat etc. 2021+ packages below.
-  profanity jabberd2 irssi
+  # totem grilo-plugins dleyna-server
   # math tools
-  octave
+  # octave
   # Phone stuff
-  libimobiledevice ifuse libheif
   bluez bluez-utils pulseaudio-bluetooth
   libnl owlink-git
   # DVD authoring libs
@@ -188,12 +238,11 @@ jeff_packages=(
   # GPU nonsense
   cuda md2pdf
   # Engineering; Wolfram Alpha cli client
-  tungsten intel-undervolt
+  intel-undervolt
   intel-media-driver intel-compute-runtime level-zero-loader
   i915-firmware
   # Awesome environment mgr
-  guix-installer # guix
-  vmtouch
+  # guix-installer # guix
 )
 
 for i in "${!jeff_packages[@]}"; do
@@ -221,10 +270,10 @@ EOF
 
 systemctl enable pcscd.socket
 
-cat <<EOF >>/etc/pulse/default.pa
-load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
-
-EOF
+#cat <<EOF >>/etc/pulse/default.pa
+#load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
+#
+#EOF
 
 cat <<EOF >/etc/systemd/logind.conf
 #  This file is part of systemd.
@@ -271,21 +320,21 @@ HandleLidSwitch=ignore
 EOF
 
 
-sudo -u jeffrey python3 -m pip install --user pyftpdlib
-python3 -m pip install --user pyftpdlib
+jeff_pip_packages=(
+  clikan
+  htmlmin
+  # TODO figure out what below supported
+  #pyftpdlib
+  #jetforce
+  #flameprof
+)
 
-sudo -u jeffrey python3 -m pip install --user jetforce
-python3 -m pip install --user jetforce
+for i in "${!jeff_pip_packages[@]}"; do
+  echo "Installing ${jeff_pip_packages[$i]} ($i of ${#jeff_pip_packages[@]})"
+  sudo -u jeffrey python -m pip install --user \
+    "${jeff_pip_packages[$i]}" || true
+done
 
-# More python libs for other projects
-#sudo -u jeffrey python3 -m pip install --user tensorflow
-sudo -u jeffrey python3 -m pip install --user flameprof
-
-# For blog build.py
-sudo -u jeffrey python3 -m pip install --user htmlmin
-
-# For cli tool /j/.local/bin/clikan
-sudo -u jeffrey python3 -m pip install --user clikan
 
 systemctl enable radicale
 systemctl enable iwd
@@ -293,29 +342,10 @@ systemctl enable jabberd
 
 systemctl enable intel-undervolt
 
-echo 'WARNING: installing linux-ck'
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    linux-headers || true # we use these for DKMS modules, so....
-
-
-sudo -u jeffrey yay -S \
-    --noconfirm --answerdiff=None \
-    linux-ck linux-ck-headers || true # Don't fail on this if we don't get it
-
 
 # Add linux-ck boot entry
 ROOT_PARTUUID=$(blkid | grep -i 'AzureOS-Root' | sed 's/.*PARTUUID="//g' | sed 's/".*//g' | tr -d '\n')
 echo "ROOT_PARTUUID=$ROOT_PARTUUID"
-cat <<EOF >/boot/loader/entries/azureosck.conf
-title Azure OS CK
-linux /vmlinuz-linux-ck
-initrd /intel-ucode.img
-initrd /initramfs-linux-ck.img
-options root=PARTUUID=$ROOT_PARTUUID rootfstype=btrfs add_efi_memmap mitigations=off loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0 noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off intel_pstate=passive pti=off
-
-EOF
 
 cat <<EOF >/boot/loader/entries/azureos.conf
 title Azure OS
@@ -330,7 +360,7 @@ cat <<EOF >/boot/loader/loader.conf
 #console-mode keep
 console-mode max
 timeout 2
-default azureosck.conf
+default azureos.conf
 EOF
 
 # install rust in jeff's account
@@ -353,6 +383,8 @@ added_groups=(
   optical
   lp
   input
+  # Copy-pasted in from prior install, TODO sort/organize
+  root bin daemon sys tty mem ftp mail log smmsp proc http games lock uuidd dbus network floppy scanner power polkitd rtkit usbmux nvidia-persistenced wireshark transmission rabbitmq cups seat adbusers i2c qemu libvirt-qemu systemd-oom sgx brltty jabber tss gnupg-pkcs11-scd-proxy gnupg-pkcs11 dhcpcd libvirt _telnetd xpra radicale brlapi colord avahi git systemd-coredump systemd-timesync systemd-resolve systemd-network systemd-journal-remote rfkill systemd-journal users video uucp storage render optical lp kvm input disk audio utmp kmem wheel adm jeffrey dialout plugdev nobody
 )
 for g in "${added_groups[@]}" ; do
   echo "Adding jeffrey to $g"
@@ -421,6 +453,9 @@ jdirs=(
       # wallpaper/<category>; the only files we have will be in wallpaper/originals, categories contain symlinks
   '/j/proj' # projects
   '/j/docs' # documents
+  '/j/infra'
+  '/j/art'
+  '/j/edu'
 
   '/j/www' # public data served over ftp, http, https, friggin' telnet, and a samba server. This is what srvmgr.py performs.
 
@@ -429,15 +464,6 @@ jdirs=(
 for jd in "${jdirs[@]}" ; do
   echo "Creating directory $jd"
   mkdir -p "$jd"
-done
-
-jfiles=(
-  '/j/tasks.toml' # [[task]].name="do thing X"/.period="24h" ; polled by /j/bins/eventmgr.py every 60s -> 300s? keep it opinionated.
-
-)
-for jf in "${jfiles[@]}" ; do
-  echo "Touching file $jf"
-  touch "$jf"
 done
 
 

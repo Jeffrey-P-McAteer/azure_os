@@ -13,6 +13,7 @@ crun() {
   fi
 }
 
+# Installs dependencies for the host building the OS
 install_deps() {
   sudo pacman -S \
     archiso
@@ -46,8 +47,11 @@ jconfigs=(
   '/j/.Xresources.d/rxvt-unicode'
 
   # Higher level graphics
+  '/j/.config/i3/'
   '/j/.config/i3/config'
   '/j/.i3status.conf'
+  '/j/.config/sway/'
+  '/j/.config/sway/config'
   '/j/.config/dunst'
   '/j/.config/mpv/mpv.conf'
   '/j/.config/nitrogen/'
@@ -61,6 +65,9 @@ jconfigs=(
   '/j/.zshrc'
   '/j/.zlogin'
   '/j/.oh-my-zsh/'
+
+  '/j/.config/alacritty/'
+  '/j/.config/alacritty/alacritty.yml'
   
   '/j/.icons/default/index.theme'
   '/j/.config/gtk-3.0'
@@ -71,41 +78,31 @@ jconfigs=(
   '/j/.streamlinkrc'
 
   # Documents
+  '/j/docs/'
   '/j/docs/pw'
 
-  '/j/photos'
-  '/j/infra'
+  '/j/lists/'
+
+  # Task management data
+  '/j/.clikan.yaml'
+  '/j/.clikan.dat'
+
+
+  #'/j/photos'
+  #'/j/infra'
+  #'/j/music'
 
   # Keep my secrets
   '/j/ident/'
   '/j/.gnupg/' # gpg --list-secret-keys --keyid-format LONG
 
   # MY applications (reasonably sized I assure... nobody)
-  # '/j/bins/azure-os/'
-  # '/j/bins/azure-angel-backup'
-  # '/j/bins/music-fetch.py'
-  # '/j/bins/import-wp.sh'
-  # '/j/bins/eventmgr.py'
-  # '/j/bins/srvmgr.py'
-  # '/j/bins/backlight-up'
-  # '/j/bins/backlight-down'
-  # '/j/bins/volume-up'
-  # '/j/bins/volume-down'
-  # '/j/bins/d'
   '/j/bins/'
-  
-  # enhancements to existing programs
-  # '/j/bins/rmpv'
-  # '/j/bins/mpvep'
-  # '/j/bins/gdbbin'
-  # '/j/bins/pause-procs'
 
   '/j/bin/'
 
   # Applications + stupidly large things
   '/j/.mozilla/'
-  '/j/.clikan.yaml'
-  '/j/.clikan.dat'
   '/j/.config/mimeapps.list'
   
   # Personal OS stuff
@@ -137,12 +134,11 @@ jconfigs=(
   '/etc/ssl/radicale.cert.pem'
   '/var/lib/radicale'
 
-  '/etc/jabberd/'
-
   '/etc/X11/xorg.conf.d/51-joystick.conf'
 
   '/etc/sudoers.d/jeffrey'
-  '/etc/udev/rules.d/99-thunderbolt-auto-auth.rules' # ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
+  '/etc/udev/rules.d/99-thunderbolt-auto-auth.rules'
+  '/etc/udev/rules.d/00-usb-permissions.rules'
   
 )
 
@@ -198,16 +194,33 @@ echo "Booting in qemu..."
 
 #AZURE_OS_HDA="/mnt/wdb/azure_os_hda.img"
 #AZURE_OS_HDA="/j/downloads/azure_os_hda.img"
-AZURE_OS_HDA="/dev/sda"
+# # AZURE_OS_HDA="/dev/sda"
+
+AZURE_OS_HDA="/mnt/scratch/azure_os_hda.img"
+
+if grep -q '/dev/' <<<"$AZURE_OS_HDA" ; then
+  cat <<EOF
+WARNING: AZURE_OS_HDA=$AZURE_OS_HDA, which looks like a physical disk!
+Ok to overwrite it?
+EOF
+  read yn
+  if ! grep -qi 'y' in <<<"$yn" ; then
+    echo "Exiting..."
+    exit 1
+  fi
+fi
+
 if ! [ -e "$AZURE_OS_HDA" ] ; then
   sudo qemu-img create "$AZURE_OS_HDA" 24G
   sudo chown jeffrey "$AZURE_OS_HDA"
 fi
 
+
 # Need `yay -S edk2-ovmf` for /usr/share/edk2-ovmf/x64/OVMF_CODE.fd
 OVMF_CODE="/usr/share/edk2-ovmf/x64/OVMF_CODE.fd"
 if ! [ -e "$OVMF_CODE" ] ; then
   echo "Please install 'edk2-ovmf' so the file $OVMF_CODE is available."
+  exit 1
 fi
 
 cat <<EOF
