@@ -23,7 +23,7 @@ crun install_deps
 
 # archlive is checked in to source control, so this only runs if you've thrown it out.
 if ! [ -e archlive ] ; then
-  cp -r /usr/share/archiso/configs/baseline ./archlive
+  cp -r /usr/share/archiso/configs/releng ./archlive
 else
   # Do fast rsync to update files; every now & then maybe we should purge everything that
   # isn't archlive/airootfs/tools?
@@ -34,8 +34,8 @@ else
     sudo find ./archlive -type f -not -path './archlive/airootfs/tools*' -print -delete
 
     rsync --verbose -r --links \
-      /usr/share/archiso/configs/baseline/ \
-      ./archlive
+      /usr/share/archiso/configs/releng/ \
+      ./archlive/
   fi
 fi
 
