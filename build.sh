@@ -27,7 +27,7 @@ if ! [ -e archlive ] ; then
 else
   # Do fast rsync to update files; every now & then maybe we should purge everything that
   # isn't archlive/airootfs/tools?
-  find archlive -type f -not -path 'archlive/airootfs/tools*' -print -delete
+  sudo find archlive -type f -not -path 'archlive/airootfs/tools*' -print -delete
 
   rsync -r /usr/share/archiso/configs/baseline/ archlive
 
@@ -144,14 +144,14 @@ jconfigs=(
 
 
 sudo du -sh \
-  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=jconfigs.tar.gz \
+  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=Index --exclude=Cache --exclude=jconfigs.tar.gz \
   "${jconfigs[@]}"
 
 echo 'Beginning archive...'
 sleep 1
 
 sudo tar -czvf archlive/airootfs/tools/jconfigs.tar.gz \
-  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=jconfigs.tar.gz \
+  --exclude=target --exclude=build --exclude=mkarchiso --exclude=work --exclude=out --exclude=Index --exclude=Cache --exclude=jconfigs.tar.gz \
   "${jconfigs[@]}"
 
 # Drop in a default network DHCP handler for ethernet conns
