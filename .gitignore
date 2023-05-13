@@ -6,3 +6,7 @@ out/
 
 jconfigs.tar.gz
 
+archlive/out
+archlive/out/*
+archlive/work
+archlive/work/*

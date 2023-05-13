@@ -2,6 +2,7 @@
 
 set -e
 
+# Conditional run, uses a directory to check if a step has occurred. If so, step is skipped.
 crun() {
   if ! [ -e '.crun' ] ; then
     mkdir '.crun'
@@ -22,6 +23,13 @@ crun install_deps
 # archlive is checked in to source control, so this only runs if you've thrown it out.
 if ! [ -e archlive ] ; then
   cp -r /usr/share/archiso/configs/baseline archlive
+else
+  # Do fast rsync to update files; every now & then maybe we should purge everything that
+  # isn't archlive/airootfs/tools?
+  find archlive -type f -not -path 'archlive/airootfs/tools*' -print -delete
+
+  rsync -r /usr/share/archiso/configs/baseline/ archlive
+
 fi
 
 # Copy personal config files from my system into the install system
@@ -162,11 +170,12 @@ UseDNS=yes
 DNS=1.1.1.1
 
 EOF
+
+# Enable important services
 mkdir -p archlive/airootfs/etc/systemd/system/multi-user.target.wants/
 
 ln -nsf /usr/lib/systemd/system/systemd-networkd.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/
 ln -nsf /usr/lib/systemd/system/systemd-resolved.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/
-
 
 
 # Now build the iso
