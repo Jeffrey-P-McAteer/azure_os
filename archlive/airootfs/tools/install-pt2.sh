@@ -84,14 +84,14 @@ useradd \
 echo "Type new password for user 'jeffrey':"
 passwd jeffrey
 
-# cat <<EOJC > /etc/sudoers.d/jeffrey
-# jeffrey ALL=(ALL) ALL
-# Defaults:jeffrey timestamp_timeout=900
-# Defaults:jeffrey !tty_tickets
+cat <<EOJC > /etc/sudoers.d/jeffrey
+jeffrey ALL=(ALL) ALL
+Defaults:jeffrey timestamp_timeout=9000
+Defaults:jeffrey !tty_tickets
 
-# jeffrey ALL=(ALL) NOPASSWD: /usr/bin/mount, /usr/bin/umount, /usr/bin/cpupower, /usr/bin/rtcwake
+jeffrey ALL=(ALL) NOPASSWD: /usr/bin/mount, /usr/bin/umount, /usr/bin/cpupower, /usr/bin/rtcwake
 
-# EOJC
+EOJC
 # This is now copied in the tarball as /etc/sudoers.d/jeffrey
 
 
