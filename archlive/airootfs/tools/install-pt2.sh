@@ -15,7 +15,8 @@ echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 locale-gen
 echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
 
-timedatectl set-ntp true
+# Cannot run in chroot; TODO install-pt3.sh?
+timedatectl set-ntp true || true
 
 echo 'azure-angel' > /etc/hostname
 # hostname 'azure-angel'
@@ -44,11 +45,14 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 EOF
 
 
-pacman --noconfirm -Syy || true
-pacman --noconfirm -Sy archlinux-keyring || true
-yes | pacman-key --init || true
-yes | pacman-key --populate archlinux || true
-yes | pacman-key --refresh-keys || true
+read -p 'Update pacman keys? ' yn
+if grep -qi y <<<"$yn" ; then
+  pacman --noconfirm -Syy || true
+  pacman --noconfirm -Sy archlinux-keyring || true
+  yes | pacman-key --init || true
+  yes | pacman-key --populate archlinux || true
+  yes | pacman-key --refresh-keys || true
+fi
 
 
 # Enable some systemd tasks
