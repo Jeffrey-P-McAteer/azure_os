@@ -228,7 +228,7 @@ nameserver 127.0.0.53
 options edns0 trust-ad
 EOF
 
-echo 'Running arch-chroot, please run /tools/mnt_install.sh'
+echo 'Running arch-chroot, please run /tools/install-pt2.sh'
 
 arch-chroot /mnt
 
