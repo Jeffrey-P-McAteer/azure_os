@@ -178,13 +178,21 @@ ln -nsf /usr/lib/systemd/system/systemd-resolved.service archlive/airootfs/etc/s
 
 cd archlive
 
+# sudo mkarchiso \
+#   -A 'AzureOS' \
+#   -L 'AzureOS' \
+#   -P 'jeffrey mcateer <jeffrey.p.mcateer@gmail.com>' \
+#   -C pacman.conf \
+#   -p yay \
+#   -v $(pwd)
+
 sudo mkarchiso \
   -A 'AzureOS' \
   -L 'AzureOS' \
   -P 'jeffrey mcateer <jeffrey.p.mcateer@gmail.com>' \
   -C pacman.conf \
-  -p yay \
   -v $(pwd)
+
 
 ISO_IMG=$(find $(pwd) -name '*.iso' 2>/dev/null | head -n 1 | tr -d '\n')
 echo "DONE! Built $ISO_IMG"
