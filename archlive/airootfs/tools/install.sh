@@ -182,11 +182,16 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
-pacman --noconfirm -Syy || true
-pacman --noconfirm -Sy archlinux-keyring || true
-pacman-key --init || true
-pacman-key --populate archlinux || true
-pacman-key --refresh-keys || true
+read -p 'Update pacman keys? ' yn
+if grep -qi y <<<"$yn" ; then
+
+  pacman --noconfirm -Syy || true
+  pacman --noconfirm -Sy archlinux-keyring || true
+  pacman-key --init || true
+  pacman-key --populate archlinux || true
+  pacman-key --refresh-keys || true
+
+fi
 
 pacstrap /mnt \
   base \
