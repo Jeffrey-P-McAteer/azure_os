@@ -78,7 +78,7 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${INSTALL_DEVICE}
   n # new partition
   1 # partition number 1
     # default - start at beginning of disk 
-  +4G # 4 GB boot partition
+  +2G # 2 GB boot partition
   n # new partition
   2 # partition number 2
     # default - start at beginning of disk 
@@ -194,6 +194,7 @@ pacstrap /mnt \
   linux-firmware \
   sudo \
   git \
+  base-devel \
   openssh \
   vim \
   dosfstools \
@@ -236,5 +237,4 @@ echo 'Install complete!'
 
 # Sync changes
 sync
-
 
