@@ -126,6 +126,7 @@ sleep 0.5
 
 jeff_packages=(
   sublime-text-3 oh-my-zsh-git tree archiso
+  helix
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa acpilight
   xprintidle
   fwupd
@@ -161,6 +162,7 @@ jeff_packages=(
   lshw
   # USB-C graphics dock stuff
   vulkan-intel xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
+  vulkan-radeon mesa-vdpau
   iw texlive-most meson ninja valgrind
   intel-undervolt fping usbutils opencl-headers
   displaylink xf86-video-fbdev
@@ -187,9 +189,11 @@ jeff_packages=(
   cuda md2pdf
   # Engineering; Wolfram Alpha cli client
   tungsten intel-undervolt
-  intel-media-driver
+  intel-media-driver intel-compute-runtime level-zero-loader
+  i915-firmware
   # Awesome environment mgr
   guix-installer # guix
+  vmtouch
 )
 
 for i in "${!jeff_packages[@]}"; do
