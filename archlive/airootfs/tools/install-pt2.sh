@@ -142,7 +142,8 @@ jeff_packages=(
   python python-pip
   htop
   tungsten
-
+  powerline-console-fonts
+  
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
@@ -151,7 +152,7 @@ jeff_packages=(
   adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
   opendesktop-fonts
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
-
+  
   ## Wayland DE
   sway
 
