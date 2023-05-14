@@ -121,6 +121,7 @@ ROOT_PARTITION=$ROOT_PARTITION
 
 EOF
 
+yn=''
 read -p 'Does this look right, continue? ' yn
 if ! grep -q y <<<"$yn" ; then
   echo 'Exiting...'
@@ -182,7 +183,7 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
-read -p 'Update pacman keys? ' yn
+read -t 45 -p 'Update pacman keys? ' yn
 if grep -qi y <<<"$yn" ; then
 
   pacman --noconfirm -Syy || true

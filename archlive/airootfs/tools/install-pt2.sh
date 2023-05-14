@@ -44,8 +44,8 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
-
-read -p 'Update pacman keys? ' yn
+yn=''
+read -t 45 -p 'Update pacman keys? ' yn
 if grep -qi y <<<"$yn" ; then
   pacman --noconfirm -Syy || true
   pacman --noconfirm -Sy archlinux-keyring || true
@@ -79,10 +79,10 @@ useradd \
   --home /j/ \
   --shell /bin/zsh \
   --groups wheel,lp \
-  -m jeffrey
+  -m jeffrey || true
 
 echo "Type new password for user 'jeffrey':"
-passwd jeffrey
+passwd jeffrey || true
 
 cat <<EOJC > /etc/sudoers.d/jeffrey
 jeffrey ALL=(ALL) ALL
