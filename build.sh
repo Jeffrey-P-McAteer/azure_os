@@ -58,6 +58,7 @@ jconfigs=(
   '/j/.i3status.conf'
   '/j/.config/sway/'
   '/j/.config/sway/config'
+  '/j/.config/waybar'
   '/j/.config/dunst'
   '/j/.config/mpv/mpv.conf'
   '/j/.config/nitrogen/'
