@@ -259,6 +259,8 @@ done
 
 
 systemctl enable cups.socket || true
+# Must happen as jeffrey user!
+sudo -u jeffrey systemctl --user enable wireplumber || true
 
 
 cat <<EOF >/etc/opensc.conf
