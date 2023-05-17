@@ -155,6 +155,7 @@ jeff_packages=(
   
   ## Wayland DE
   sway swaybg
+  ddcutil
 
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
@@ -228,7 +229,6 @@ jeff_packages=(
   displaylink xf86-video-fbdev
   libva-mesa-driver
   opencl-amd vulkan-amdgpu-pro vulkan-tools
-  ddcutil
   # Movies
   # totem grilo-plugins dleyna-server
   # math tools
