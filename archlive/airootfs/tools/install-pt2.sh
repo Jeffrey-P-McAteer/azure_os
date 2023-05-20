@@ -188,8 +188,8 @@ jeff_packages=(
   ccid opensc pcsc-tools
 
   ## File / protocol supports
-  libimobiledevice ifuse libheif
-
+  libimobiledevice ifuse libplist libusbmuxd libheif
+  
   ## Common project dependencies
   archiso
 
