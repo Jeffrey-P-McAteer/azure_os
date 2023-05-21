@@ -154,7 +154,7 @@ jeff_packages=(
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
   
   ## Wayland DE
-  sway swaybg
+  sway swaybg swayidle
   ddcutil
 
   ## Audio tools
