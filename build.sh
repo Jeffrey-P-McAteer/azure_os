@@ -58,6 +58,8 @@ jconfigs=(
   '/j/.i3status.conf'
   '/j/.config/sway/'
   '/j/.config/sway/config'
+  '/j/.config/swayidle/'
+  '/j/.config/swayidle/config'
   '/j/.config/waybar'
   '/j/.config/wireplumber'
   '/j/.config/dunst'
