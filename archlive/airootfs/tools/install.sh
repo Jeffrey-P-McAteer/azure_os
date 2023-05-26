@@ -346,6 +346,7 @@ echo 'Copying /tools/ over...'
 
 mkdir -p /mnt/tools/
 cp -r /tools/. /mnt/tools/
+chmod +x /mnt/tools/*.sh || true
 
 echo 'azure-angel' > /mnt/etc/hostname
 cat <<EOF >/mnt/etc/hosts
