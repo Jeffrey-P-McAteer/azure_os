@@ -15,7 +15,7 @@
 set -e
 
 if (( $EUID != 0 )); then
-    echo "Run it as root"
+    echo "Run me as root"
     exit 1
 fi
 
@@ -183,6 +183,7 @@ Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 EOF
 
+yn=n
 read -t 45 -p 'Update pacman keys? ' yn
 if grep -qi y <<<"$yn" ; then
 

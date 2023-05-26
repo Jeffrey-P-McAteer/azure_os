@@ -29,18 +29,277 @@ bootctl --esp-path=/boot/ install
 
 # Package + signing stuff
 mkdir -p /etc/pacman.d/gnupg
-echo 'keyserver hkp://pool.key-servers.net' >> /etc/pacman.d/gnupg/gpg.conf
+if ! [ -e /etc/pacman.d/gnupg/gpg.conf ] || ! grep -q "hkp://pool.key-servers.net" </etc/pacman.d/gnupg/gpg.conf ; then
+  echo 'keyserver hkp://pool.key-servers.net' >> /etc/pacman.d/gnupg/gpg.conf
+fi
 mkdir -p /root/.gnupg/
-echo 'keyserver hkp://pool.key-servers.net' >> /root/.gnupg/gpg.conf
+if ! [ -e /root/.gnupg/gpg.conf ] || ! grep -q "hkp://pool.key-servers.net" </root/.gnupg/gpg.conf ; then
+  echo 'keyserver hkp://pool.key-servers.net' >> /root/.gnupg/gpg.conf
+fi
 
 cat <<EOF > /etc/pacman.d/mirrorlist
-# USA
-Server = http://mirrors.acm.wpi.edu/archlinux/\$repo/os/\$arch
+##
+## Arch Linux repository mirrorlist
+## Filtered by mirror score from mirror status page
+## Generated on 2023-05-26
+##
 
-## Worldwide
-Server = http://mirrors.evowise.com/archlinux/\$repo/os/\$arch
-Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
-Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.wdc1.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.rit.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://codingflyboy.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://wcbmedia.io:8000/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.advancedhosters.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://coresite.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.clarkson.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.sonic.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.theash.xyz/arch/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.mit.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://ftp.osuosl.org/pub/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://opencolo.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://nnenix.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.rit.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mnvoip.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.sonic.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://coresite.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://archive-us-nj.gaab-networks.de/arch/\$repo/os/\$arch
+## United States
+#Server = https://mirror.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.arizona.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://volico.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://opencolo.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.mia11.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://archive-us-ny.gaab-networks.de/arch/\$repo/os/\$arch
+## United States
+#Server = http://mirror.sfo12.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://repo.ialab.dsu.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.cat.pdx.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://uvermont.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror2.sandyriver.net/pub/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://arch.mirror.constant.com/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.acm.wpi.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.vectair.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.sfo12.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://plug-mirror.rcac.purdue.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://archive-us-nj.gaab-networks.de/arch/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.vectair.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.phx1.us.spryservers.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.lug.mtu.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.pit.teraswitch.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://iad.mirrors.misaka.one/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.cs.vt.edu/pub/ArchLinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.arizona.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://arch.mirror.ivo.st/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.radwebhosting.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://zxcvfdsa.com/arch/\$repo/os/\$arch
+## United States
+#Server = https://archive-us-lv.gaab-networks.de/arch/\$repo/os/\$arch
+## United States
+#Server = https://mirror.adectra.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://irltoolkit.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://southfront.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.stephanie.is/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://ohioix.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://uvermont.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.rutgers.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://nocix.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.metrocast.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.dal10.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.umd.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://distro.ibiblio.org/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mnvoip.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.wdc1.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.clarkson.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://iad.mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.cs.pitt.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.umd.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.phx1.us.spryservers.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.mia11.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://nnenix.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://irltoolkit.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.kernel.org/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.ocf.berkeley.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.ette.biz/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://volico.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.mit.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://arch.mirror.constant.com/\$repo/os/\$arch
+## United States
+#Server = http://iad.mirrors.misaka.one/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.dal10.us.leaseweb.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://ziply.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.siena.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.hackingand.coffee/arch/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirror.hackingand.coffee/arch/\$repo/os/\$arch
+## United States
+#Server = http://arlm.tyzoid.com/\$repo/os/\$arch
+## United States
+#Server = https://ord.mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://southfront.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.math.princeton.edu/pub/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.stephanie.is/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.bloomu.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.fossable.org/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://arlm.tyzoid.com/\$repo/os/\$arch
+## United States
+#Server = http://mirror.pit.teraswitch.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.adectra.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.xmission.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.radwebhosting.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://mirrors.xtom.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://ziply.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://forksystems.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.vtti.vt.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.gigenet.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.ocf.berkeley.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://archmirror1.octyl.net/\$repo/os/\$arch
+## United States
+#Server = https://mirror.tmmworkshop.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://dfw.mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://codingflyboy.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://archive-us-lv.gaab-networks.de/arch/\$repo/os/\$arch
+## United States
+#Server = https://plug-mirror.rcac.purdue.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://repo.ialab.dsu.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.lug.mtu.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://ohioix.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.bloomu.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://nocix.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://archive-us-ny.gaab-networks.de/arch/\$repo/os/\$arch
+## United States
+#Server = http://iad.mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://ridgewireless.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://archmirror1.octyl.net/\$repo/os/\$arch
+## United States
+#Server = http://www.gtlib.gatech.edu/pub/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirrors.xtom.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://repo.miserver.it.umich.edu/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://ord.mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://dfw.mirror.rackspace.com/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://ridgewireless.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://america.mirror.pkgbuild.com/\$repo/os/\$arch
+## United States
+#Server = https://ftp.osuosl.org/pub/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://mirror.ette.biz/archlinux/\$repo/os/\$arch
+## United States
+#Server = http://forksystems.mm.fcix.net/archlinux/\$repo/os/\$arch
+## United States
+#Server = https://m.lqy.me/arch/\$repo/os/\$arch
 
 EOF
 
@@ -84,20 +343,19 @@ useradd \
 echo "Type new password for user 'jeffrey':"
 passwd jeffrey || true
 
-cat <<EOJC > /etc/sudoers.d/jeffrey
+if ! [ -e /etc/sudoers.d/jeffrey ] ; then
+  cat <<EOJC > /etc/sudoers.d/jeffrey
 jeffrey ALL=(ALL) ALL
 Defaults:jeffrey timestamp_timeout=9000
 Defaults:jeffrey !tty_tickets
 
 jeffrey ALL=(ALL) NOPASSWD: /usr/bin/mount, /usr/bin/umount, /usr/bin/cpupower, /usr/bin/rtcwake
-
 EOJC
-# This is now copied in the tarball as /etc/sudoers.d/jeffrey
 
+fi
 
 # Grant root rights to ALL (this is removed at the end)
 echo 'root ALL = (ALL) NOPASSWD: ALL' > /etc/sudoers.d/installstuff
-
 
 # Add autologin for jeffrey user
 mkdir -p '/etc/systemd/system/getty@tty1.service.d'
@@ -110,7 +368,7 @@ EOF
 
 
 # Install deps to makepkg
-pacman -S --noconfirm base-devel
+pacman -S --noconfirm base-devel git
 
 # use jeffrey user to install yay
 
@@ -126,11 +384,14 @@ pacman -S --noconfirm base-devel
 # use yay to install neat sw
 
 echo 'WARNING: lots of apps going in'
-sleep 0.5
+sleep 1.5
 
 jeff_packages=(
   # Kernel stuff
   linux-headers # for DKMS drivers
+  intel-ucode
+  intel-undervolt
+  i915-firmware
 
   ## terminals
   zsh oh-my-zsh-git
@@ -143,7 +404,11 @@ jeff_packages=(
   htop
   tungsten
   powerline-console-fonts
-  
+  curl wget
+  lshw
+  net-tools
+  nmap
+
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
@@ -156,6 +421,7 @@ jeff_packages=(
   ## Wayland DE
   sway swaybg swayidle swaylock
   ddcutil
+  slurp grim
 
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
@@ -175,6 +441,8 @@ jeff_packages=(
   gimp
   xcftools
   inkscape
+  cups system-config-printer
+  transmission-cli transmission-gtk
 
   ## Extra sw dev tools
   mold-git
@@ -193,61 +461,72 @@ jeff_packages=(
   ## Common project dependencies
   archiso
 
-  ## Unsorted
-
-
-  acpilight
-  xprintidle
-  fwupd
-  # weston
-  # mingw-w64-gcc arm-none-eabi-gcc
-  
-  lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
-  inotify-tools
-  # Spellcheckers
-  hunspell-en_US mythes-en hyphen-en hyphen libmythes
-  aspell aspell-en
-  # Multilang
-  fcitx fcitx-configtool fcitx-libpinyin fcitx-kkc
-  dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant
-  mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
-  remmina  libvncserver
-  qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
-  strace nmap intel-ucode tunsafe net-tools
-  # alsa-utils pulseaudio pulseaudio-alsa
-  #jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
-  lftp netkit-telnet-ssl cpupower samba
-  # gmni-git ledger
-  # gnuplot
-  # HW info dumpers
-  lshw
-  # USB-C graphics dock stuff
-  vulkan-intel xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
-  vulkan-radeon mesa-vdpau
-  iw texlive-most meson ninja valgrind
-  intel-undervolt fping usbutils opencl-headers
+  # GPU nonsense
+  bolt
+  vulkan-intel xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati
+  vulkan-radeon mesa mesa-vdpau
   displaylink xf86-video-fbdev
   libva-mesa-driver
   opencl-amd vulkan-amdgpu-pro vulkan-tools
+  cuda
+  intel-media-driver intel-compute-runtime level-zero-loader
+
+  ## Unsorted
+  qemu libguestfs edk2-ovmf virt-viewer
+  rsync
+  freerdp
+  smartmontools inotify-tools
+  fwupd
+  dunst
+  iw
+
+
+  # Super unsorted
+
+  #acpilight
+  #xprintidle
+  # weston
+  # mingw-w64-gcc arm-none-eabi-gcc
+  
+  #lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
+  # Spellcheckers
+  #hunspell-en_US mythes-en hyphen-en hyphen libmythes
+  #aspell aspell-en
+  # Multilang
+  # fcitx fcitx-configtool fcitx-libpinyin fcitx-kkc
+  # dmenu maim freerdp barrier spice-gtk arandr xf86-input-synaptics xf86-input-joystick wpa_supplicant
+  #mpv feh llpp ripgrep transmission-cli transmission-gtk brightnessctl curl wget streamlink
+  #remmina  libvncserver
+  #qemu libguestfs edk2-ovmf virt-viewer unclutter xautolock rsync rclone
+  #strace nmap intel-ucode tunsafe net-tools
+  # alsa-utils pulseaudio pulseaudio-alsa
+  #jdk-openjdk jd-gui-bin gradle pavucontrol pa-applet-git python python-pip xpra discount evolution
+  #lftp netkit-telnet-ssl cpupower samba
+  # gmni-git ledger
+  # gnuplot
+  # HW info dumpers
+  #lshw
+  # USB-C graphics dock stuff
+  # vulkan-intel xf86-video-intel xf86-video-amdgpu xf86-video-nouveau xf86-video-ati bolt
+  # vulkan-radeon mesa-vdpau
+  #iw texlive-most meson ninja valgrind
+  #intel-undervolt fping usbutils opencl-headers
+  #displaylink xf86-video-fbdev
   # Movies
   # totem grilo-plugins dleyna-server
   # math tools
   # octave
   # Phone stuff
-  bluez bluez-utils pulseaudio-bluetooth
-  libnl owlink-git
+  #bluez bluez-utils pulseaudio-bluetooth
+  #libnl owlink-git
   # DVD authoring libs
-  cdrtools libburn brasero devede
+  #cdrtools libburn brasero devede
   # Print utils
-  system-config-printer
+  #system-config-printer
   # GPU nonsense
-  cuda md2pdf
+  #cuda md2pdf
   # Engineering; Wolfram Alpha cli client
-  intel-undervolt
-  intel-media-driver intel-compute-runtime level-zero-loader
-  i915-firmware
-  # Awesome environment mgr
-  # guix-installer # guix
+  #intel-undervolt
 )
 
 for i in "${!jeff_packages[@]}"; do
@@ -275,12 +554,8 @@ enable_pinpad = false
 
 EOF
 
-systemctl enable pcscd.socket
+systemctl enable pcscd.socket || true
 
-#cat <<EOF >>/etc/pulse/default.pa
-#load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
-#
-#EOF
 
 cat <<EOF >/etc/systemd/logind.conf
 #  This file is part of systemd.
@@ -327,27 +602,9 @@ HandleLidSwitch=ignore
 EOF
 
 
-jeff_pip_packages=(
-  clikan
-  htmlmin
-  # TODO figure out what below supported
-  #pyftpdlib
-  #jetforce
-  #flameprof
-)
-
-for i in "${!jeff_pip_packages[@]}"; do
-  echo "Installing ${jeff_pip_packages[$i]} ($i of ${#jeff_pip_packages[@]})"
-  sudo -u jeffrey python -m pip install --user \
-    "${jeff_pip_packages[$i]}" || true
-done
-
-
-systemctl enable radicale
-systemctl enable iwd
-systemctl enable jabberd
-
-systemctl enable intel-undervolt
+systemctl enable radicale || true
+systemctl enable iwd || true
+systemctl enable intel-undervolt || true
 
 
 # Add linux-ck boot entry
@@ -359,7 +616,7 @@ title Azure OS
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options root=PARTUUID=$ROOT_PARTUUID rootfstype=btrfs add_efi_memmap mitigations=off loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0 noibrs noibpb nopti nospectre_v2 nospectre_v1 l1tf=off nospec_store_bypass_disable no_stf_barrier mds=off tsx=on tsx_async_abort=off intel_pstate=passive pti=off
+options root=PARTUUID=$ROOT_PARTUUID rootfstype=btrfs add_efi_memmap mitigations=off pti=off intel_pstate=passive
 
 EOF
 
@@ -371,7 +628,7 @@ default azureos.conf
 EOF
 
 # install rust in jeff's account
-sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y" || true
 
 # Config stuff
 sudo -u jeffrey git config --global core.preloadIndex true
@@ -431,21 +688,6 @@ DHCP=ipv4
 
 EOF
 
-# .xinitrc for i3wm
-sudo -u jeffrey sh -c "cat - > /j/.xinitrc" <<EOF
-
-# i3 is responsible for all x11 app startups (/j/.config/i3/config),
-# do not start x11 apps here besides i3.
-
-# SO SAYETH THE PRIMARY USER OF THIS OS
-
-xrdb ~/.Xresources
-
-exec i3
-
-EOF
-
-
 # This is the authoritative list of directories I use to organize $HOME
 jdirs=(
   '/j/bin'        # symlinks to bins/<project>/<build directory>/<actual binary>
@@ -459,8 +701,8 @@ jdirs=(
       # hourly/<timestamped pics of webcam every hour, post-processed into other projects>
       # wallpaper/<category>; the only files we have will be in wallpaper/originals, categories contain symlinks
   '/j/proj' # projects
+  '/j/infra' # infrastructure - commonly long-term projects
   '/j/docs' # documents
-  '/j/infra'
   '/j/art'
   '/j/edu'
 
@@ -488,8 +730,7 @@ tar -C / -zxvf /tools/jconfigs.tar.gz
 chown -R jeffrey:jeffrey /j/
 
 # Enable some services we copied in
-systemctl enable eventmgr
-systemctl enable srvmgr
+systemctl enable eventmgr || true
 
 # Remove rights we granted root earlier; yeah it's stupid but we're being civilized here.
 rm /etc/sudoers.d/installstuff || true
