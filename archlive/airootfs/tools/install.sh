@@ -167,10 +167,15 @@ echo 'Running pacstrap'
 # Ideally we'd use pool.sks-keyservers.net but I don't know where pacman's gpg config file is.
 sed -i 's/SigLevel = .*/SigLevel = Never/g' /etc/pacman.conf
 
+# Package + signing stuff
 mkdir -p /etc/pacman.d/gnupg
-echo 'keyserver hkp://pool.key-servers.net' >> /etc/pacman.d/gnupg/gpg.conf
+if ! [ -e /etc/pacman.d/gnupg/gpg.conf ] || ! grep -q "hkp://keyserver.ubuntu.com" </etc/pacman.d/gnupg/gpg.conf ; then
+  echo 'keyserver hkp://keyserver.ubuntu.com' >> /etc/pacman.d/gnupg/gpg.conf
+fi
 mkdir -p /root/.gnupg/
-echo 'keyserver hkp://pool.key-servers.net' >> /root/.gnupg/gpg.conf
+if ! [ -e /root/.gnupg/gpg.conf ] || ! grep -q "hkp://keyserver.ubuntu.com" </root/.gnupg/gpg.conf ; then
+  echo 'keyserver hkp://keyserver.ubuntu.com' >> /root/.gnupg/gpg.conf
+fi
 
 cat <<EOF > /etc/pacman.d/mirrorlist
 ##
