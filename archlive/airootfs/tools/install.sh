@@ -311,17 +311,15 @@ Server = https://m.lqy.me/arch/\$repo/os/\$arch
 
 EOF
 
-yn=n
-read -t 45 -p 'Update pacman keys? ' yn
-if grep -qi y <<<"$yn" ; then
-
-  pacman --noconfirm -Syy || true
-  pacman --noconfirm -Sy archlinux-keyring || true
-  pacman-key --init || true
-  pacman-key --populate archlinux || true
-  pacman-key --refresh-keys || true
-
-fi
+# yn=n
+# read -t 45 -p 'Update pacman keys? ' yn
+# if grep -qi y <<<"$yn" ; then
+#   pacman --noconfirm -Syy || true
+#   pacman --noconfirm -Sy archlinux-keyring || true
+#   pacman-key --init || true
+#   pacman-key --populate archlinux || true
+#   pacman-key --refresh-keys || true
+# fi
 
 pacstrap /mnt \
   base \

@@ -176,15 +176,15 @@ Server = https://m.lqy.me/arch/\$repo/os/\$arch
 
 EOF
 
-yn=''
-read -t 45 -p 'Update pacman keys? ' yn
-if grep -qi y <<<"$yn" ; then
-  pacman --noconfirm -Syy || true
-  pacman --noconfirm -Sy archlinux-keyring || true
-  yes | pacman-key --init || true
-  yes | pacman-key --populate archlinux || true
-  yes | pacman-key --refresh-keys || true
-fi
+# yn=''
+# read -t 45 -p 'Update pacman keys? ' yn
+# if grep -qi y <<<"$yn" ; then
+#   pacman --noconfirm -Syy || true
+#   pacman --noconfirm -Sy archlinux-keyring || true
+#   yes | pacman-key --init || true
+#   yes | pacman-key --populate archlinux || true
+#   yes | pacman-key --refresh-keys || true
+# fi
 
 
 # Enable some systemd tasks
