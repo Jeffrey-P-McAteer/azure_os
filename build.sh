@@ -47,10 +47,10 @@ jconfigs=(
   '/j/.gitconfig'
 
   # Low-level graphics
-  '/j/.Xresources'
-  '/j/.Xresources.d/colors'
-  '/j/.Xresources.d/fonts'
-  '/j/.Xresources.d/rxvt-unicode'
+  #'/j/.Xresources'
+  #'/j/.Xresources.d/colors'
+  #'/j/.Xresources.d/fonts'
+  #'/j/.Xresources.d/rxvt-unicode'
 
   # Higher level graphics
   #'/j/.config/i3/'
