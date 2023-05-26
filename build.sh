@@ -53,9 +53,9 @@ jconfigs=(
   '/j/.Xresources.d/rxvt-unicode'
 
   # Higher level graphics
-  '/j/.config/i3/'
-  '/j/.config/i3/config'
-  '/j/.i3status.conf'
+  #'/j/.config/i3/'
+  #'/j/.config/i3/config'
+  #'/j/.i3status.conf'
   '/j/.config/sway/'
   '/j/.config/sway/config'
   '/j/.config/swayidle/'
