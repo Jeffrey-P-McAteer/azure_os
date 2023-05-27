@@ -87,6 +87,7 @@ jconfigs=(
   '/j/.config/rclone'
 
   '/j/.streamlinkrc'
+  '/j/.dexcom_c'
 
   # Documents
   '/j/docs/'
