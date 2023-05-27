@@ -29,12 +29,12 @@ bootctl --esp-path=/boot/ install
 
 # Package + signing stuff
 mkdir -p /etc/pacman.d/gnupg
-if ! [ -e /etc/pacman.d/gnupg/gpg.conf ] || ! grep -q "hkp://pool.key-servers.net" </etc/pacman.d/gnupg/gpg.conf ; then
-  echo 'keyserver hkp://pool.key-servers.net' >> /etc/pacman.d/gnupg/gpg.conf
+if ! [ -e /etc/pacman.d/gnupg/gpg.conf ] || ! grep -q "hkp://keyserver.ubuntu.com" </etc/pacman.d/gnupg/gpg.conf ; then
+  echo 'keyserver hkp://keyserver.ubuntu.com' >> /etc/pacman.d/gnupg/gpg.conf
 fi
 mkdir -p /root/.gnupg/
-if ! [ -e /root/.gnupg/gpg.conf ] || ! grep -q "hkp://pool.key-servers.net" </root/.gnupg/gpg.conf ; then
-  echo 'keyserver hkp://pool.key-servers.net' >> /root/.gnupg/gpg.conf
+if ! [ -e /root/.gnupg/gpg.conf ] || ! grep -q "hkp://keyserver.ubuntu.com" </root/.gnupg/gpg.conf ; then
+  echo 'keyserver hkp://keyserver.ubuntu.com' >> /root/.gnupg/gpg.conf
 fi
 
 cat <<EOF > /etc/pacman.d/mirrorlist
