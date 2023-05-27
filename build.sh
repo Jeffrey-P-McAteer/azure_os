@@ -61,6 +61,7 @@ jconfigs=(
   '/j/.config/swayidle/'
   '/j/.config/swayidle/config'
   '/j/.config/waybar'
+  '/j/.config/rofi'
   '/j/.config/wireplumber'
   '/j/.config/dunst'
   '/j/.config/mpv/mpv.conf'
