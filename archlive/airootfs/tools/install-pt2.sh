@@ -284,7 +284,7 @@ jeff_packages=(
   cpupower
   
   ## X11 DE
-  xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
+  xorg xorg-server xorg-startx-systemd xorg-xrandr mesa mesa-utils
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
   ttf-scientifica adobe-source-code-pro-fonts ttf-nerd-fonts-hack-complete-git
   noto-fonts noto-fonts-cjk terminus-font-otb
