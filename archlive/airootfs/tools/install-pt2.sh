@@ -342,7 +342,7 @@ jeff_packages=(
   displaylink xf86-video-fbdev
   libva-mesa-driver
   opencl-amd vulkan-amdgpu-pro vulkan-tools
-  cuda
+  nvidia cuda
   intel-media-driver intel-compute-runtime level-zero-loader
 
   ## Unsorted
