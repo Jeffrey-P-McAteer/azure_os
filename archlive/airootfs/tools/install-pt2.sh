@@ -567,18 +567,22 @@ EOF
 jdirs=(
   '/j/bin'        # symlinks to bins/<project>/<build directory>/<actual binary>
   '/j/bins'       # directories of source/config/build tools which produce my bins
+
   '/j/downloads'  # fuck capital letters, I don't love my shift key that much.
+  
   '/j/ident'      # was /j/i/, contains secrets and identities
   '/j/lists'      # holds anime.csv and music.csv, any other lists I keep track of (books.csv?) Most of these .csv files will have comments using '#' chars.
   '/j/music'      # contains music which is managed by /j/bins/music_fetch.py which reads /j/lists/music.csv
+  
   '/j/photos'     # contains:
       # bb/<blackberry camera files, synced on USB conn>
       # hourly/<timestamped pics of webcam every hour, post-processed into other projects>
       # wallpaper/<category>; the only files we have will be in wallpaper/originals, categories contain symlinks
+  
   '/j/proj' # projects
-  '/j/infra' # infrastructure - commonly long-term projects
+  
   '/j/docs' # documents
-  '/j/art'
+  
   '/j/edu'
 
   '/j/www' # public data served over ftp, http, https, friggin' telnet, and a samba server. This is what srvmgr.py performs.
