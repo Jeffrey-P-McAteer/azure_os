@@ -292,7 +292,7 @@ jeff_packages=(
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
   
   ## Wayland DE
-  sway swaybg swayidle swaylock
+  sway swaybg swayidle swaylock waybar
   ddcutil
   slurp grim
 
