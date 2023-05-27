@@ -281,7 +281,8 @@ jeff_packages=(
   lshw
   net-tools
   nmap
-
+  cpupower
+  
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
