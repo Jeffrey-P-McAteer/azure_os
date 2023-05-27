@@ -282,6 +282,7 @@ jeff_packages=(
   net-tools
   nmap
   cpupower
+  imagemagick
   
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa mesa-utils
