@@ -301,6 +301,7 @@ jeff_packages=(
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
   wireplumber
+  helvum
 
   ## GUI software dev tools
   sublime-text-3
@@ -348,6 +349,7 @@ jeff_packages=(
 
   ## Unsorted
   qemu libguestfs edk2-ovmf virt-viewer
+  qemu-ui-gtk qemu-audio-pa
   rsync
   freerdp
   smartmontools inotify-tools
