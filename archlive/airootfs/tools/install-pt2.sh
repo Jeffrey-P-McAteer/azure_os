@@ -327,6 +327,7 @@ jeff_packages=(
 
   ## Background servers to support other devices
   radicale
+  tailscale
   
   ## Extra hardware utilities (smartcard stuff)
   ccid opensc pcsc-tools
@@ -417,6 +418,8 @@ done
 systemctl enable cups.socket || true
 # Must happen as jeffrey user!
 sudo -u jeffrey systemctl --user enable wireplumber || true
+
+systemctl enable tailscaled.service || true
 
 
 cat <<EOF >/etc/opensc.conf
