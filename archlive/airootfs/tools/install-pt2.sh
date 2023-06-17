@@ -328,6 +328,7 @@ jeff_packages=(
   ## Background servers to support other devices
   radicale
   tailscale
+  cifs-utils
   
   ## Extra hardware utilities (smartcard stuff)
   ccid opensc pcsc-tools
