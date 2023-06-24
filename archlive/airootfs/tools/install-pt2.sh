@@ -296,7 +296,8 @@ jeff_packages=(
   ## Wayland DE
   sway swaybg swayidle swaylock waybar rofi
   ddcutil
-  slurp grim
+  slurp grim slop
+  adwaita-dark
 
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
