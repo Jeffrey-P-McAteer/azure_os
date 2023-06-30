@@ -298,11 +298,13 @@ jeff_packages=(
   ddcutil
   slurp grim slop
   adwaita-dark
+  evdi
 
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
   wireplumber
   helvum
+  bluez bluez-utils
 
   ## GUI software dev tools
   sublime-text-3
@@ -422,6 +424,8 @@ systemctl enable cups.socket || true
 sudo -u jeffrey systemctl --user enable wireplumber || true
 
 systemctl enable tailscaled.service || true
+
+systemctl enable bluetooth || true
 
 
 cat <<EOF >/etc/opensc.conf
