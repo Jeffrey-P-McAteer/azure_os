@@ -298,7 +298,6 @@ jeff_packages=(
   ddcutil
   slurp grim slop
   adwaita-dark
-  evdi
 
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
