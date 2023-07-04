@@ -515,6 +515,9 @@ EOF
 # install rust in jeff's account
 sudo -u jeffrey sh -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y" || true
 
+# Install zig
+yay -S zig
+
 # Config stuff
 sudo -u jeffrey git config --global core.preloadIndex true
 
