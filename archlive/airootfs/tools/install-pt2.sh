@@ -354,6 +354,8 @@ jeff_packages=(
   ## Unsorted
   qemu libguestfs edk2-ovmf virt-viewer
   qemu-ui-gtk qemu-audio-pa
+  qemu-system-aarch64 qemu-user-static qemu-user-static-binfmt
+
   rsync
   freerdp
   smartmontools inotify-tools
