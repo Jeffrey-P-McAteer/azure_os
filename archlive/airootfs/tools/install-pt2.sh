@@ -298,6 +298,7 @@ jeff_packages=(
   ddcutil
   slurp grim slop
   adwaita-dark
+  wl-clipboard
 
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
@@ -326,6 +327,9 @@ jeff_packages=(
   mold-git
   gdb
   vmtouch
+  
+  ## Math/Physics/Science tools
+  plots
 
   ## Background servers to support other devices
   radicale
