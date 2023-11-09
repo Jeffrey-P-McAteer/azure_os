@@ -300,6 +300,9 @@ jeff_packages=(
   adwaita-dark
   wl-clipboard
 
+  # Work Utils
+  libcacard
+
   ## Audio tools
   pipewire pipewire-audio pipewire-alsa pipewire-pulse
   wireplumber
@@ -328,6 +331,9 @@ jeff_packages=(
   gdb
   vmtouch
   
+  # Language support
+  dotnet-sdk
+
   ## Math/Physics/Science tools
   plots
 
