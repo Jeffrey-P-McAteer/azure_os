@@ -299,6 +299,7 @@ jeff_packages=(
   slurp grim slop
   adwaita-dark
   wl-clipboard
+  swww
 
   # Work Utils
   libcacard
