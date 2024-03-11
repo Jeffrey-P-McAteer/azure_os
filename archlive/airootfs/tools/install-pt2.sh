@@ -309,6 +309,9 @@ jeff_packages=(
   wireplumber
   helvum
   bluez bluez-utils
+  
+  ## AV tools
+  shotcut
 
   ## GUI software dev tools
   sublime-text-3
