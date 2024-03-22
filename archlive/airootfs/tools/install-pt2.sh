@@ -283,7 +283,7 @@ jeff_packages=(
   nmap
   cpupower
   imagemagick
-  
+
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa mesa-utils
   i3 lxappearance arc-gtk-theme arc-icon-theme breeze-hacked-cursor-theme
@@ -292,7 +292,7 @@ jeff_packages=(
   adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
   opendesktop-fonts
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
-  
+
   ## Wayland DE
   sway swaybg swayidle swaylock waybar rofi
   ddcutil
@@ -309,7 +309,7 @@ jeff_packages=(
   wireplumber
   helvum
   bluez bluez-utils
-  
+
   ## AV tools
   shotcut
 
@@ -329,12 +329,13 @@ jeff_packages=(
   inkscape
   cups system-config-printer
   transmission-cli transmission-gtk
+  wf-recorder
 
   ## Extra sw dev tools
   mold-git
   gdb
   vmtouch
-  
+
   # Language support
   dotnet-sdk
 
@@ -345,13 +346,13 @@ jeff_packages=(
   radicale
   tailscale
   cifs-utils
-  
+
   ## Extra hardware utilities (smartcard stuff)
   ccid opensc pcsc-tools
 
   ## File / protocol supports
   libimobiledevice ifuse libplist libusbmuxd libheif
-  
+
   ## Common project dependencies
   archiso
 
@@ -384,7 +385,7 @@ jeff_packages=(
   #xprintidle
   # weston
   # mingw-w64-gcc arm-none-eabi-gcc
-  
+
   #lxappearance xorg-xcursorgen xorg-xhost xdotool nitrogen cups dunst
   # Spellcheckers
   #hunspell-en_US mythes-en hyphen-en hyphen libmythes
@@ -564,7 +565,7 @@ done
 ## The below files OUGHT to be added to azure_os/build.sh in jconfigs.
 ## They are hardcoded here because they do not exist on the source OS
 ## but they are planned in the next OS.
-## 
+##
 ## TODO start versioning my personal OS?
 ##
 ####
@@ -598,20 +599,20 @@ jdirs=(
   '/j/bins'       # directories of source/config/build tools which produce my bins
 
   '/j/downloads'  # fuck capital letters, I don't love my shift key that much.
-  
+
   '/j/ident'      # was /j/i/, contains secrets and identities
   '/j/lists'      # holds anime.csv and music.csv, any other lists I keep track of (books.csv?) Most of these .csv files will have comments using '#' chars.
   '/j/music'      # contains music which is managed by /j/bins/music_fetch.py which reads /j/lists/music.csv
-  
+
   '/j/photos'     # contains:
       # bb/<blackberry camera files, synced on USB conn>
       # hourly/<timestamped pics of webcam every hour, post-processed into other projects>
       # wallpaper/<category>; the only files we have will be in wallpaper/originals, categories contain symlinks
-  
+
   '/j/proj' # projects
-  
+
   '/j/docs' # documents
-  
+
   '/j/edu'
 
   '/j/www' # public data served over ftp, http, https, friggin' telnet, and a samba server. This is what srvmgr.py performs.
