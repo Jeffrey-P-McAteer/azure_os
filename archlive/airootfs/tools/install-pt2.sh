@@ -352,6 +352,7 @@ jeff_packages=(
 
   ## File / protocol supports
   libimobiledevice ifuse libplist libusbmuxd libheif
+  curlftpfs 
 
   ## Common project dependencies
   archiso
@@ -372,7 +373,7 @@ jeff_packages=(
   qemu-system-aarch64 qemu-user-static qemu-user-static-binfmt
 
   rsync
-  freerdp
+  freerdp freerdp2
   smartmontools inotify-tools
   fwupd
   dunst
