@@ -378,6 +378,7 @@ jeff_packages=(
   fwupd
   dunst
   iw
+  wireless_tools
 
 
   # Super unsorted
