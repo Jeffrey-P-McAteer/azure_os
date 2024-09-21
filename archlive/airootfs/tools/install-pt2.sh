@@ -265,6 +265,7 @@ jeff_packages=(
   intel-ucode
   intel-undervolt
   i915-firmware
+  util-linux
 
   ## terminals
   zsh oh-my-zsh-git
