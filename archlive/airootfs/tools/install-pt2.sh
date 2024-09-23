@@ -277,6 +277,7 @@ jeff_packages=(
   python python-pip
   htop
   tungsten
+  powerline powerline-fonts
   powerline-console-fonts
   curl wget
   lshw
