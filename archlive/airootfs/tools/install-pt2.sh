@@ -302,6 +302,7 @@ jeff_packages=(
   adwaita-dark
   wl-clipboard
   swww
+  wl-mirror
 
   # Work Utils
   libcacard
@@ -354,7 +355,8 @@ jeff_packages=(
 
   ## File / protocol supports
   libimobiledevice ifuse libplist libusbmuxd libheif
-  curlftpfs 
+  curlftpfs
+  udisks2 
 
   ## Common project dependencies
   archiso
