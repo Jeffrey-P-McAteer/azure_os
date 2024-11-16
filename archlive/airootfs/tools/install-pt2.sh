@@ -376,6 +376,10 @@ jeff_packages=(
   qemu-ui-gtk qemu-audio-pa
   qemu-system-aarch64 qemu-user-static qemu-user-static-binfmt
 
+  alsa-utils
+  waypipe
+  swayimg
+
   rsync
   freerdp freerdp2
   smartmontools inotify-tools
