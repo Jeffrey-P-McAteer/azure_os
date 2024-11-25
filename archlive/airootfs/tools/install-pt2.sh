@@ -344,6 +344,7 @@ jeff_packages=(
 
   ## Math/Physics/Science tools
   plots
+  zathura
 
   ## Background servers to support other devices
   radicale
