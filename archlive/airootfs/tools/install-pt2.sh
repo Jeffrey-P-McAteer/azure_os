@@ -344,8 +344,8 @@ jeff_packages=(
 
   ## Math/Physics/Science tools
   plots
-  zathura
-
+  zathura zathura-pdf-poppler zathura-cb zathura-djvu 
+ 
   ## Background servers to support other devices
   radicale
   tailscale
