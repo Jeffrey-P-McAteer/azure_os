@@ -286,7 +286,6 @@ jeff_packages=(
   cpupower
   imagemagick
   efibootmgr
-  cpuset
 
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa mesa-utils
