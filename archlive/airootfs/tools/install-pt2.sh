@@ -285,6 +285,8 @@ jeff_packages=(
   nmap
   cpupower
   imagemagick
+  efibootmgr
+  cpuset
 
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa mesa-utils
@@ -303,6 +305,7 @@ jeff_packages=(
   wl-clipboard
   swww
   wl-mirror
+  gammastep
 
   # Work Utils
   libcacard
