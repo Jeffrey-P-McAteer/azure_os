@@ -285,6 +285,7 @@ jeff_packages=(
   nmap
   cpupower
   imagemagick
+  efibootmgr
 
   ## X11 DE
   xorg xorg-server xorg-startx-systemd xorg-xrandr mesa mesa-utils
@@ -294,6 +295,10 @@ jeff_packages=(
   adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts
   opendesktop-fonts
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
+  ttf-dejavu ttf-liberation
+  otf-font-awesome
+
+
 
   ## Wayland DE
   sway swaybg swayidle swaylock waybar rofi
@@ -303,6 +308,7 @@ jeff_packages=(
   wl-clipboard
   swww
   wl-mirror
+  gammastep
 
   # Work Utils
   libcacard
