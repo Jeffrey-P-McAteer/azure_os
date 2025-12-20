@@ -124,6 +124,9 @@ jconfigs=(
   '/etc/systemd/system/portfwd.service'
   '/etc/systemd/network/' # copies ALL my network files
 
+  '/etc/systemd/system/mnt-nfs.automount'
+  '/etc/systemd/system/mnt-nfs.mount'
+
   #'/etc/systemd/nspawn/steamcontainer.nspawn'
   '/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
 
