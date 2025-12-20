@@ -127,6 +127,9 @@ jconfigs=(
   '/etc/systemd/system/mnt-nfs.automount'
   '/etc/systemd/system/mnt-nfs.mount'
 
+  '/etc/udev/rules.d/90-unmanaged-drives.rules'
+
+
   #'/etc/systemd/nspawn/steamcontainer.nspawn'
   '/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
 
