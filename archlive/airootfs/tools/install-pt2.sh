@@ -356,6 +356,7 @@ jeff_packages=(
   radicale
   tailscale
   cifs-utils
+  kdeconnect wc-clipboard
 
   ## Extra hardware utilities (smartcard stuff)
   ccid opensc pcsc-tools
