@@ -120,8 +120,8 @@ jconfigs=(
   # Personal OS stuff
   '/etc/systemd/system.conf'
   '/etc/systemd/system/eventmgr.service'
-  '/etc/systemd/system/srvmgr.service'
-  '/etc/systemd/system/portfwd.service'
+  #'/etc/systemd/system/srvmgr.service'
+  #'/etc/systemd/system/portfwd.service'
   '/etc/systemd/network/' # copies ALL my network files
 
   '/etc/systemd/system/mnt-nfs.automount'
@@ -131,11 +131,11 @@ jconfigs=(
 
 
   #'/etc/systemd/nspawn/steamcontainer.nspawn'
-  '/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
+  #'/etc/systemd/system/systemd-nspawn@.service.d/override.conf'
 
-  '/etc/X11/xorg.conf.d/70-synaptics.conf'
+  #'/etc/X11/xorg.conf.d/70-synaptics.conf'
 
-  '/etc/modules-load.d/intel-gvt-g.conf'
+  #'/etc/modules-load.d/intel-gvt-g.conf'
 
   # Not sure what adds the thinkpad_acpi module but it didn't have to be installed
   '/etc/modprobe.d/thinkpad_acpi.conf'
@@ -146,16 +146,18 @@ jconfigs=(
   '/etc/makepkg.conf'
 
   # OS stuff
-  '/etc/radicale/'
-  '/etc/ssl/radicale.key.pem'
-  '/etc/ssl/radicale.cert.pem'
-  '/var/lib/radicale'
+  #'/etc/radicale/'
+  #'/etc/ssl/radicale.key.pem'
+  #'/etc/ssl/radicale.cert.pem'
+  #'/var/lib/radicale'
 
-  '/etc/X11/xorg.conf.d/51-joystick.conf'
+  #'/etc/X11/xorg.conf.d/51-joystick.conf'
 
   '/etc/sudoers.d/jeffrey'
-  '/etc/udev/rules.d/99-thunderbolt-auto-auth.rules'
-  '/etc/udev/rules.d/00-usb-permissions.rules'
+  '/etc/udev/rules.d/51-blink1.rules'
+  '/etc/udev/rules.d/80-canon_mfp2.rules'
+  '/etc/udev/rules.d/90-unmanaged-drives.rules'
+  '/etc/udev/rules.d/99-removable.rules'
   
 )
 
