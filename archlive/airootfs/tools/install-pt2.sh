@@ -297,7 +297,9 @@ jeff_packages=(
   adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
   ttf-dejavu ttf-liberation
   otf-font-awesome
-
+  
+  shairport-sync
+  quickemu qemu-hw-usb-redirect qemu-audio-pipewire qemu-hw-display-virtio-vga qemu-hw-display-qxl
 
 
   ## Wayland DE
@@ -309,6 +311,10 @@ jeff_packages=(
   swww
   wl-mirror
   gammastep
+
+  # Misc desktop apps
+  nemo
+  # nemo-preview
 
   # Work Utils
   libcacard
