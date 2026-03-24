@@ -301,6 +301,7 @@ jeff_packages=(
   shairport-sync
   quickemu qemu-hw-usb-redirect qemu-audio-pipewire qemu-hw-display-virtio-vga qemu-hw-display-qxl
 
+  sane naps2
 
   ## Wayland DE
   sway swaybg swayidle swaylock waybar rofi
