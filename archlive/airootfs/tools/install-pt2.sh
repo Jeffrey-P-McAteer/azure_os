@@ -312,6 +312,7 @@ jeff_packages=(
   swww
   wl-mirror
   gammastep
+  wl-gammactl-rust
 
   # Misc desktop apps
   nemo
